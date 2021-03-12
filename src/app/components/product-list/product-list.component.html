@@ -1,0 +1,43 @@
+<div class="main-content">
+    <div class="section-content-p30">
+        <div class="container-fluid">
+            <div class="row">
+                <table class="table table-bordered table-hover table-sm">
+                    <thead style="background-color: brown;">
+                        <tr>
+                            <th></th>
+                            <th>Name</th>
+                            <th>Product Code</th>
+                            <th>Brand Name</th>
+                            <th>Stored Location</th>
+                            <th>Unit Price</th>
+                            <th>Active Status</th>
+                            <th>No of units in stock</th>
+                            <th>Created Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor = "let tempProduct of products">
+                            <td><img src = {{tempProduct.imageUrl}} style="height:50px;width:45px;"/>
+                            </td>
+                            <td>{{tempProduct.name}}</td>
+                            <td>{{tempProduct.sku}}</td>
+                            <td>{{tempProduct.brandName}}</td>
+                            <td>{{tempProduct.itemStoredLocation}}</td>
+                            <td>{{tempProduct.unitPrice}}</td>
+                            <td>{{tempProduct.active == true?'Active':'Inactive'}}</td>
+                            <td>{{tempProduct.unitsInStock}}</td>
+                            <td>{{tempProduct.createdDate}}</td>
+                            <td><span style = "margin-left: 10px;" class="far fa-edit fa-lg"></span>
+                                <span style = "margin-left: 10px;"class="fas fa-eye fa-lg"></span>
+                                <span  style ="margin-left: 10px;" class="far fa-trash-alt fa-lg"></span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
