@@ -19,13 +19,13 @@
                     </thead>
                     <tbody>
                         <tr *ngFor = "let tempProduct of products">
-                            <td><img src = {{tempProduct.imageUrl}} style="height:50px;width:45px;"/>
+                            <td><img src = {{tempProduct.imageUrl}} style="height:45px;width:50px;"/>
                             </td>
                             <td>{{tempProduct.name}}</td>
                             <td>{{tempProduct.sku}}</td>
                             <td>{{tempProduct.brandName}}</td>
                             <td>{{tempProduct.itemStoredLocation}}</td>
-                            <td>{{tempProduct.unitPrice}}</td>
+                            <td>{{tempProduct.unitPrice}}<img src = "assets/images/products/currency_symbol.png" style = "margin-left:5px ;"></td>
                             <td>{{tempProduct.active == true?'Active':'Inactive'}}</td>
                             <td>{{tempProduct.unitsInStock}}</td>
                             <td>{{tempProduct.createdDate}}</td>
@@ -40,4 +40,3 @@
         </div>
     </div>
 </div>
-
