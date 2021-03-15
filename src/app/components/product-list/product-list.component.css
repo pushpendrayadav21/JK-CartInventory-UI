@@ -1,6 +1,16 @@
 table.table.table-bordered th {
-    BACKGROUND: #e40d3f;
+    BACKGROUND: #ffc107;;
     color: #fff;
     font-size: 14px;
     padding: 5px;
+}
+
+.au-btn-submit-product {
+    position: relative;
+    right: 0;
+    min-width: 160px;
+    color: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 43px;
+    background: #35dc42;
 }
