@@ -8,9 +8,11 @@ import {Routes, RouterModule} from '@angular/router';
 import { ProductCategoryMenuComponent } from './components/product-category-menu/product-category-menu.component';
 import { CreateCategoryComponent } from './components/create-category/create-category.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ProductCategoryListComponent } from './component/product-category-list/product-category-list.component';
+import { ProductCategoryListComponent }  from './components/product-category-list/product-category-list.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 const routes:Routes = [
   {path:'category/:id',component:ProductListComponent},
+  {path:'categoryList',component:ProductCategoryListComponent},
   {path:'category',component:ProductListComponent},
   {path:'addCategory',component:CreateCategoryComponent},
   {path:'products',component:ProductListComponent},
@@ -29,7 +31,8 @@ const routes:Routes = [
     RouterModule.forRoot(routes),
     BrowserModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]

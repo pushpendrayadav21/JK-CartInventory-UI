@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ProductCategory } from 'src/app/common/product-category';
 import { ProductCategoryModel } from 'src/app/common/product-category-model';
 import { CategoryService } from 'src/app/services/category.service';
@@ -12,7 +13,9 @@ import { CategoryService } from 'src/app/services/category.service';
 export class CreateCategoryComponent implements OnInit {
   categoryFormGroup: FormGroup;
   
-  constructor(private formBuilder:FormBuilder,private categoryService:CategoryService) { }
+  constructor(private formBuilder:FormBuilder,
+              private categoryService:CategoryService,
+              private router:Router) { }
 
   ngOnInit(): void {
     this.categoryFormGroup = this.formBuilder.group({
@@ -45,5 +48,8 @@ export class CreateCategoryComponent implements OnInit {
   resetProductCategory() {
     // reset the form
     this.categoryFormGroup.reset();
+    // navigate back to the products page
+    this.router.navigateByUrl("/categoryList");
+
   }
 }
