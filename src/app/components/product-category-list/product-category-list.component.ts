@@ -43,12 +43,7 @@ export class ProductCategoryListComponent implements OnInit {
     console.log('in handleSearchProduct..')
     const theKeyword:string = this.route.snapshot.paramMap.get('keyword')
     // now search for the product category using keyword
-    this.productCategoryService.searchCategory(theKeyword).subscribe(
-      data =>{
-        this.productcategoryList = data;
-        console.log(data);
-      }
-    );
+    this.productCategoryService.searchCategory(this.thePageNumber-1,this.thePageSize,theKeyword).subscribe(this.processResult());
   }
   processResult() {
     return data =>{  

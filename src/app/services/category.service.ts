@@ -45,12 +45,10 @@ export class CategoryService {
     return this.httpClient.put(`${this.categoryUrl}/${id}`,category)
   }
 
-  searchCategory(theKeyword: string):Observable<ProductCategory[]> {
+  searchCategory(thePage:number, thePageSize:number,theKeyword: string):Observable<GetResponseProductCategory> {
     console.log('> searchCategory')
-    const searchUrl = `${this.categoryUrl}/search/findByName?name=${theKeyword}`;
-    return this.httpClient.get<GetResponseProductCategory>(searchUrl).pipe(
-      map(response => response.content)
-    )
+    const searchUrl = `${this.categoryUrl}/search/findByName?page=${thePage}&size=${thePageSize}&name=${theKeyword}`;
+    return this.httpClient.get<GetResponseProductCategory>(searchUrl);
   }
 }
 
