@@ -7,12 +7,14 @@ import { ProductService } from './services/product.service';
 import {Routes, RouterModule} from '@angular/router';
 import { ProductCategoryMenuComponent } from './components/product-category-menu/product-category-menu.component';
 import { CreateCategoryComponent } from './components/create-category/create-category.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ProductCategoryListComponent }  from './components/product-category-list/product-category-list.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { UpdateProductCategoryComponent } from './components/update-product-category/update-product-category.component';
 const routes:Routes = [
   {path:'category/:id',component:ProductListComponent},
   {path:'categoryList',component:ProductCategoryListComponent},
+  {path:'updateCategory/:id',component:UpdateProductCategoryComponent},
   {path:'category',component:ProductListComponent},
   {path:'addCategory',component:CreateCategoryComponent},
   {path:'products',component:ProductListComponent},
@@ -25,12 +27,14 @@ const routes:Routes = [
     ProductListComponent,
     ProductCategoryMenuComponent,
     CreateCategoryComponent,
-    ProductCategoryListComponent
+    ProductCategoryListComponent,
+    UpdateProductCategoryComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
     BrowserModule,
     HttpClientModule,
+    FormsModule,
     ReactiveFormsModule,
     NgbModule
   ],

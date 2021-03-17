@@ -18,7 +18,7 @@
                         <tr *ngFor="let tempProduct of productcategoryList">
                             <td>{{tempProduct.id}}</td>
                             <td>{{tempProduct.categoryName}}</td>
-                            <td><span style="margin-left: 10px;" class="far fa-edit fa-lg"></span>
+                            <td><a routerLink = "/updateCategory/{{tempProduct.id}}"><span style="margin-left: 10px;" class="far fa-edit fa-lg"></span></a>
                                 <button (click)="deleteProductCategory(tempProduct.id)"><span style="margin-left: 10px;" class="far fa-trash-alt fa-lg"></span></button>
                             </td>
                         </tr>

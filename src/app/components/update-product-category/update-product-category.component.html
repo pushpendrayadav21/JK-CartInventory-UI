@@ -1,0 +1,15 @@
+<div class="main-content page-m">
+    <div class="section-content section-content-p30">
+        <div class="container-fluid">
+            <div style="width: 400px;">
+                <form (ngSubmit)="onSubmit()">
+                  <div class="form-group">
+                    <label for="name">Category Name</label>
+                    <input type="text" class="form-control" id="categoryName" required [(ngModel)] = "category.categoryName" name ="categoryName">
+                  </div>                                
+                  <button type="submit" class="btn btn-success btn-sm">Update Product Category</button>
+                </form>
+              </div>
+        </div>
+    </div>
+</div>

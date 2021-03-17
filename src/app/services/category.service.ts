@@ -34,6 +34,17 @@ export class CategoryService {
   deleteProductCategory(categoryId:number):Observable<any>{
     return this.httpClient.delete(`${this.categoryUrl}/${categoryId}`)
   }
+
+  getProductCategoryById(id:number):Observable<ProductCategory>{
+    return this.httpClient.get<GetResponseProductCategory>(`${this.categoryUrl}/${id}`).pipe(
+      map(response => response.data)
+    );
+  }
+
+  updateCategory(category:ProductCategory, id:number):Observable<any>{
+
+    return this.httpClient.put(`${this.categoryUrl}/${id}`,category)
+  }
 }
 
 interface GetResponseProductCategory {
@@ -42,5 +53,5 @@ interface GetResponseProductCategory {
   totalElements:number;
   totalPages:number;
   number:number;
-
+  data:ProductCategory;
 }
