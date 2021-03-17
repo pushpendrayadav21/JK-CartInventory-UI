@@ -24,6 +24,7 @@ export class ProductCategoryListComponent implements OnInit {
     this.route.paramMap.subscribe(()=>{
       this.listProductCategory();
     });
+    console.log("Total Elements:"+this.theTotalElements);
   }
 
   listProductCategory(){
@@ -53,6 +54,7 @@ export class ProductCategoryListComponent implements OnInit {
       this.theTotalElements = data.totalElements,
       console.log('productcategoryList: '+this.productcategoryList)
       console.log("The PageNumber: "+data.totalPages);
+      console.log("The Total Elements: "+this.theTotalElements)
       
     }
   }

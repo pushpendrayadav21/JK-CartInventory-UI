@@ -1,0 +1,9 @@
+.dot {
+    height: 30px;
+    width: 60px;
+    background-color: rgb(189, 89, 71);
+    color: aliceblue;
+    display: inline-block;
+    text-align: center;
+    border-radius: 25px;
+}

@@ -1,7 +1,12 @@
 <div class="main-content">
     <div class="section-content-p30">
         <div class="container-fluid">
-            <div class="row">
+            <div class="row mb-2">
+                <b>Total Count:</b><div class="col-md-6 mb-2">
+                    <span class="dot text-center">{{theTotalElements}}</span>
+                </div>
+            </div>
+            <div class ="row">
                 <div class = "row mb-3">
                 <div class = "col-md-5">
                     <a routerLink="/addCategory" routerLinkActive="active-link" class="btn btn-sm btn-success">Add
@@ -10,7 +15,9 @@
                 <div class="col-md-5">
                     <app-search-categry></app-search-categry>
                 </div>
+                
             </div>
+            
                 <table class="table table-bordered table-hover table-sm">
                     <thead style="background-color: brown;">
                         <tr>
@@ -32,6 +39,7 @@
                 <div *ngIf = "productcategoryList.length ==0" class = "alert alert-warning col-md-12 text-center" alert = "role">
                      No Product Category Found
                 </div>
+                
             </div>
             <!--begin footer-->
             <!-- begin footer -->
