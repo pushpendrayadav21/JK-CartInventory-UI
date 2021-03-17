@@ -10,7 +10,7 @@ import { ProductCategoryModel } from '../common/product-category-model';
 })
 
 export class CategoryService {
-
+  
   private categoryUrl = "http://localhost:2245/api/jk-cart-inventory/product-category";
   constructor(private httpClient: HttpClient) { }
 
@@ -42,8 +42,15 @@ export class CategoryService {
   }
 
   updateCategory(category:ProductCategory, id:number):Observable<any>{
-
     return this.httpClient.put(`${this.categoryUrl}/${id}`,category)
+  }
+
+  searchCategory(theKeyword: string):Observable<ProductCategory[]> {
+    console.log('> searchCategory')
+    const searchUrl = `${this.categoryUrl}/search/findByName?name=${theKeyword}`;
+    return this.httpClient.get<GetResponseProductCategory>(searchUrl).pipe(
+      map(response => response.content)
+    )
   }
 }
 

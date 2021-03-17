@@ -11,6 +11,7 @@ import { CategoryService } from 'src/app/services/category.service';
 export class ProductCategoryListComponent implements OnInit {
 
   productcategoryList:ProductCategory[] = [];
+  searchMode:boolean
 
   // new properties for pagination
   thePageNumber:number = 1;
@@ -27,7 +28,27 @@ export class ProductCategoryListComponent implements OnInit {
 
   listProductCategory(){
     console.log("in list product category");
-    this.productCategoryService.getProductCategoriesPaginate(this.thePageNumber-1,this.thePageSize).subscribe(this.processResult());
+    this.searchMode = this.route.snapshot.paramMap.has('keyword'); 
+    if(this.searchMode){
+      console.log('in serch mode..')
+      this.handleSearchProduct();
+    }
+    else{
+      this.handleListProductCategory();
+    }
+    
+  }
+  
+  handleSearchProduct() {
+    console.log('in handleSearchProduct..')
+    const theKeyword:string = this.route.snapshot.paramMap.get('keyword')
+    // now search for the product category using keyword
+    this.productCategoryService.searchCategory(theKeyword).subscribe(
+      data =>{
+        this.productcategoryList = data;
+        console.log(data);
+      }
+    );
   }
   processResult() {
     return data =>{  
@@ -56,5 +77,9 @@ export class ProductCategoryListComponent implements OnInit {
 
       }
     )
+  }
+
+  handleListProductCategory(){
+    this.productCategoryService.getProductCategoriesPaginate(this.thePageNumber-1,this.thePageSize).subscribe(this.processResult());    
   }
 }

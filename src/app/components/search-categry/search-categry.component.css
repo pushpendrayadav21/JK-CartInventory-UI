@@ -1,0 +1,9 @@
+.au-btn-search-category {
+    position: relative;
+    right: 0;
+    min-width: 95px;
+    color: #fff;
+    border: 1px solid #8d2022;
+    border-radius: 20px;
+    background: #ff0728;
+}

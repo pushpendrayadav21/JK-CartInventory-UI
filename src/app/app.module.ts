@@ -11,8 +11,10 @@ import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ProductCategoryListComponent }  from './components/product-category-list/product-category-list.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { UpdateProductCategoryComponent } from './components/update-product-category/update-product-category.component';
+import { SearchCategryComponent } from './components/search-categry/search-categry.component';
 const routes:Routes = [
   {path:'category/:id',component:ProductListComponent},
+  {path:'searchByCategory/:keyword',component:ProductCategoryListComponent},
   {path:'categoryList',component:ProductCategoryListComponent},
   {path:'updateCategory/:id',component:UpdateProductCategoryComponent},
   {path:'category',component:ProductListComponent},
@@ -28,7 +30,8 @@ const routes:Routes = [
     ProductCategoryMenuComponent,
     CreateCategoryComponent,
     ProductCategoryListComponent,
-    UpdateProductCategoryComponent
+    UpdateProductCategoryComponent,
+    SearchCategryComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
