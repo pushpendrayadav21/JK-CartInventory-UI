@@ -64,17 +64,50 @@ export class ProductCategoryListComponent implements OnInit {
       this.listProductCategory();
   }
 
-  deleteProductCategory(categoryId:number){
-    this.productCategoryService.deleteProductCategory(categoryId).subscribe(
-      data =>{
-        console.log(data);
-        alert('category deleted successfully');
-        this.listProductCategory();
-        this.router.navigateByUrl("/categoryList");
+  // deleteProductCategory(categoryId:number){
+    
+  //   this.productCategoryService.deleteProductCategory(categoryId).subscribe(
+  //     data =>{
+  //       console.log(data);
+  //       alert('category deleted successfully');
+  //       this.listProductCategory();
+  //       this.router.navigateByUrl("/categoryList");
 
-      }
-    )
+  //     }
+  //   )
+  // }
+
+  deleteProductCategory(categoryId:number){
+    
+    var retVal = confirm("Do you want to delete this category: ?");
+    if( retVal == true ) {
+       this.productCategoryService.deleteProductCategory(categoryId).subscribe(
+        data =>{
+          console.log(data);
+          alert('category deleted successfully');
+          this.listProductCategory();
+          this.router.navigateByUrl("/categoryList");
+        });
+      
+    }
+    else {
+       this.listProductCategory();
+       this.router.navigateByUrl("/categoryList");
+    }
+    
   }
+
+  getConfirmation() {
+    var retVal = confirm("Do you want to continue ?");
+    if( retVal == true ) {
+       document.write ("User wants to continue!");
+       return true;
+    }
+    else {
+       document.write ("User does not want to continue!");
+       return false;
+    }
+ }
 
   handleListProductCategory(){
     this.productCategoryService.getProductCategoriesPaginate(this.thePageNumber-1,this.thePageSize).subscribe(this.processResult());    
