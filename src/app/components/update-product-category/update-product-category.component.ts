@@ -31,23 +31,42 @@ export class UpdateProductCategoryComponent implements OnInit {
 
   }
 
-  updateEmployee() {
-    this.categoryService.updateCategory(this.category, this.id).subscribe(
-      data =>{
-        console.log(data);
-        alert(`product category ${this.category.categoryName} updated successfully! `);
-        this.rout.navigateByUrl('/categoryList');
+  // updateProductCategory() {
+  //   this.categoryService.updateCategory(this.category, this.id).subscribe(
+  //     data =>{
+  //       console.log(data);
+  //       alert(`product category ${this.category.categoryName} updated successfully! `);
+  //       this.rout.navigateByUrl('/categoryList');
 
-      },
-      error =>{
-        console.log(error)
-        alert("An error occured while trying to update product category: "+this.category.categoryName)
-      }
+  //     },
+  //     error =>{
+  //       console.log(error)
+  //       alert("An error occured while trying to update product category: "+this.category.categoryName)
+  //     }
       
-    );
+  //   );
+  // }
+  updateProductCategory() {
+    var retVal = confirm(`Do you want to update category ${this.category.categoryName} ?`); 
+    if(retVal == true){
+      this.categoryService.updateCategory(this.category, this.id).subscribe(
+        data =>{
+          console.log(data);
+          alert(`product category ${this.category.categoryName} updated successfully! `);
+          this.rout.navigateByUrl('/categoryList');
+  
+        },
+        error =>{
+          console.log(error)
+          alert("An error occured while trying to update product category: "+this.category.categoryName)
+        });
+    }
+    else{
+      this.rout.navigateByUrl("/categoryList");
+    }
   }
   onSubmit() {
-    this.updateEmployee();
+    this.updateProductCategory();
     console.log('handling form data..');
 
   }

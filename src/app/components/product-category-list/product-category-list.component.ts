@@ -10,106 +10,81 @@ import { CategoryService } from 'src/app/services/category.service';
 })
 export class ProductCategoryListComponent implements OnInit {
 
-  productcategoryList:ProductCategory[] = [];
-  searchMode:boolean
+  productcategoryList: ProductCategory[] = [];
+  searchMode: boolean
 
   // new properties for pagination
-  thePageNumber:number = 1;
-  thePageSize:number = 10;
-  theTotalElements:number = 0;
-  
-  constructor(private productCategoryService:CategoryService,private router: Router,private route:ActivatedRoute) { }
+  thePageNumber: number = 1;
+  thePageSize: number = 10;
+  theTotalElements: number = 0;
+
+  constructor(private productCategoryService: CategoryService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(()=>{
+    this.route.paramMap.subscribe(() => {
       this.listProductCategory();
     });
-    console.log("Total Elements:"+this.theTotalElements);
+    console.log("Total Elements:" + this.theTotalElements);
   }
 
-  listProductCategory(){
+  listProductCategory() {
     console.log("in list product category");
-    this.searchMode = this.route.snapshot.paramMap.has('keyword'); 
-    if(this.searchMode){
+    this.searchMode = this.route.snapshot.paramMap.has('keyword');
+    if (this.searchMode) {
       console.log('in serch mode..')
       this.handleSearchProduct();
     }
-    else{
+    else {
       this.handleListProductCategory();
     }
-    
+
   }
-  
+
   handleSearchProduct() {
     console.log('in handleSearchProduct..')
-    const theKeyword:string = this.route.snapshot.paramMap.get('keyword')
+    const theKeyword: string = this.route.snapshot.paramMap.get('keyword')
     // now search for the product category using keyword
-    this.productCategoryService.searchCategory(this.thePageNumber-1,this.thePageSize,theKeyword).subscribe(this.processResult());
+    this.productCategoryService.searchCategory(this.thePageNumber - 1, this.thePageSize, theKeyword).subscribe(this.processResult());
   }
   processResult() {
-    return data =>{  
+    return data => {
       this.productcategoryList = data.content,
-      this.thePageNumber = data.number+1,
-      this.thePageSize = data.size,
-      this.theTotalElements = data.totalElements,
-      console.log('productcategoryList: '+this.productcategoryList)
-      console.log("The PageNumber: "+data.totalPages);
-      console.log("The Total Elements: "+this.theTotalElements)
-      
+        this.thePageNumber = data.number + 1,
+        this.thePageSize = data.size,
+        this.theTotalElements = data.totalElements,
+        console.log('productcategoryList: ' + this.productcategoryList)
+      console.log("The PageNumber: " + data.totalPages);
+      console.log("The Total Elements: " + this.theTotalElements)
+
     }
   }
-  updatePageSize(pageSize: number){
-      this.thePageSize = pageSize;
-      this.thePageNumber = 1;
-      this.listProductCategory();
+  updatePageSize(pageSize: number) {
+    this.thePageSize = pageSize;
+    this.thePageNumber = 1;
+    this.listProductCategory();
   }
+ 
+  deleteProductCategory(categoryId: number) {
 
-  // deleteProductCategory(categoryId:number){
-    
-  //   this.productCategoryService.deleteProductCategory(categoryId).subscribe(
-  //     data =>{
-  //       console.log(data);
-  //       alert('category deleted successfully');
-  //       this.listProductCategory();
-  //       this.router.navigateByUrl("/categoryList");
-
-  //     }
-  //   )
-  // }
-
-  deleteProductCategory(categoryId:number){
-    
     var retVal = confirm("Do you want to delete this category: ?");
-    if( retVal == true ) {
-       this.productCategoryService.deleteProductCategory(categoryId).subscribe(
-        data =>{
+    if (retVal == true) {
+      this.productCategoryService.deleteProductCategory(categoryId).subscribe(
+        data => {
           console.log(data);
           alert('category deleted successfully');
           this.listProductCategory();
           this.router.navigateByUrl("/categoryList");
         });
-      
+
     }
     else {
-       this.listProductCategory();
-       this.router.navigateByUrl("/categoryList");
+      this.listProductCategory();
+      this.router.navigateByUrl("/categoryList");
     }
-    
+
   }
 
-  getConfirmation() {
-    var retVal = confirm("Do you want to continue ?");
-    if( retVal == true ) {
-       document.write ("User wants to continue!");
-       return true;
-    }
-    else {
-       document.write ("User does not want to continue!");
-       return false;
-    }
- }
-
-  handleListProductCategory(){
-    this.productCategoryService.getProductCategoriesPaginate(this.thePageNumber-1,this.thePageSize).subscribe(this.processResult());    
+  handleListProductCategory() {
+    this.productCategoryService.getProductCategoriesPaginate(this.thePageNumber - 1, this.thePageSize).subscribe(this.processResult());
   }
 }
