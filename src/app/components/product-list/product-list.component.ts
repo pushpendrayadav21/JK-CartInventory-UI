@@ -12,7 +12,7 @@ import { ProductService } from 'src/app/services/product.service';
 export class ProductListComponent implements OnInit {
 
   products: Product[];
-  currentCategoryId:number;
+  currentCategoryId: number;
   constructor(private productService: ProductService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -24,12 +24,12 @@ export class ProductListComponent implements OnInit {
   listProducts() {
     //check if id parameter is available
     const hasCategoryId: boolean = this.activatedRoute.snapshot.paramMap.has('id');
-    if(hasCategoryId){
+    if (hasCategoryId) {
       // convert the given id string to number using '+' operator
       this.currentCategoryId = +this.activatedRoute.snapshot.paramMap.get('id');
-      console.log("current category id: "+this.currentCategoryId);
-      
-    }else{
+      console.log("current category id: " + this.currentCategoryId);
+
+    } else {
       // not category id available ...default to category id = 1
       this.currentCategoryId = 11;
     }

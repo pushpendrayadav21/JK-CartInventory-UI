@@ -9,7 +9,7 @@ import { ProductCategory } from '../common/product-category';
   providedIn: 'root'
 })
 export class ProductService {
-  
+
   private baseUrl = "http://localhost:2245/api/jk-cart-inventory/product";
   private categoryUrl = "http://localhost:2245/api/jk-cart-inventory/product-category"
 

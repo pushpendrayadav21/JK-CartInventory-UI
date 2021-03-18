@@ -12,27 +12,27 @@ import { CategoryService } from 'src/app/services/category.service';
 })
 export class CreateCategoryComponent implements OnInit {
   categoryFormGroup: FormGroup;
-  
-  constructor(private formBuilder:FormBuilder,
-              private categoryService:CategoryService,
-              private router:Router) { }
+
+  constructor(private formBuilder: FormBuilder,
+    private categoryService: CategoryService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.categoryFormGroup = this.formBuilder.group({
       category: this.formBuilder.group({
         categoryName: new FormControl('', [])
-        
+
       })
     });
   }
 
-  onSubmit(){
-    let category  = new ProductCategoryModel();  
+  onSubmit() {
+    let category = new ProductCategoryModel();
     console.log("Handaling form data");
     const categoryName = this.categoryFormGroup.controls['category'].get('categoryName').value;
-    console.log("in coming CategoryName: "+categoryName);
+    console.log("in coming CategoryName: " + categoryName);
     category.name = categoryName;
-    console.log("product category model"+category.name);
+    console.log("product category model" + category.name);
     this.categoryService.addCategory(category).subscribe({
       next: response => {
         alert(`Category ${category.name} has been created successfully !`);

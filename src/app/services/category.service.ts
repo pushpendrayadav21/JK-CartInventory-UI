@@ -10,42 +10,42 @@ import { ProductCategoryModel } from '../common/product-category-model';
 })
 
 export class CategoryService {
-  
+
   private categoryUrl = "http://localhost:2245/api/jk-cart-inventory/product-category";
   constructor(private httpClient: HttpClient) { }
 
-  addCategory(category: ProductCategoryModel):Observable<any> {
+  addCategory(category: ProductCategoryModel): Observable<any> {
     console.log("in CategoryService.addCategory");
     console.log("Category: " + JSON.stringify(category));
     return this.httpClient.post<any>(this.categoryUrl, category)
   }
 
-  getProductCategoriesPaginate(thePage:number, thePageSize:number): Observable<GetResponseProductCategory> {
+  getProductCategoriesPaginate(thePage: number, thePageSize: number): Observable<GetResponseProductCategory> {
     const searchUrl = `${this.categoryUrl}?page=${thePage}&size=${thePageSize}`;
     return this.httpClient.get<GetResponseProductCategory>(searchUrl);
   }
-  
+
   getProductCategories(): Observable<ProductCategory[]> {
     return this.httpClient.get<GetResponseProductCategory>(this.categoryUrl).pipe(
       map(response => response.content)
     );
   }
 
-  deleteProductCategory(categoryId:number):Observable<any>{
+  deleteProductCategory(categoryId: number): Observable<any> {
     return this.httpClient.delete(`${this.categoryUrl}/${categoryId}`)
   }
 
-  getProductCategoryById(id:number):Observable<ProductCategory>{
+  getProductCategoryById(id: number): Observable<ProductCategory> {
     return this.httpClient.get<GetResponseProductCategory>(`${this.categoryUrl}/${id}`).pipe(
       map(response => response.data)
     );
   }
 
-  updateCategory(category:ProductCategory, id:number):Observable<any>{
-    return this.httpClient.put(`${this.categoryUrl}/${id}`,category)
+  updateCategory(category: ProductCategory, id: number): Observable<any> {
+    return this.httpClient.put(`${this.categoryUrl}/${id}`, category)
   }
 
-  searchCategory(thePage:number, thePageSize:number,theKeyword: string):Observable<GetResponseProductCategory> {
+  searchCategory(thePage: number, thePageSize: number, theKeyword: string): Observable<GetResponseProductCategory> {
     console.log('> searchCategory')
     const searchUrl = `${this.categoryUrl}/search/findByName?page=${thePage}&size=${thePageSize}&name=${theKeyword}`;
     return this.httpClient.get<GetResponseProductCategory>(searchUrl);
@@ -54,9 +54,9 @@ export class CategoryService {
 
 interface GetResponseProductCategory {
   content: ProductCategory[];
-  size:number;
-  totalElements:number;
-  totalPages:number;
-  number:number;
-  data:ProductCategory;
+  size: number;
+  totalElements: number;
+  totalPages: number;
+  number: number;
+  data: ProductCategory;
 }

@@ -1,3 +1,3 @@
 export class ProductCategoryModel {
-    name:string;
+    name: string;
 }

@@ -14,7 +14,7 @@ export class UpdateProductCategoryComponent implements OnInit {
   id: number;
   category: ProductCategory;
 
-  constructor(private router: ActivatedRoute, private categoryService: CategoryService,private rout:Router) { }
+  constructor(private router: ActivatedRoute, private categoryService: CategoryService, private rout: Router) { }
 
   ngOnInit(): void {
     this.category = new ProductCategory();
@@ -43,25 +43,25 @@ export class UpdateProductCategoryComponent implements OnInit {
   //       console.log(error)
   //       alert("An error occured while trying to update product category: "+this.category.categoryName)
   //     }
-      
+
   //   );
   // }
   updateProductCategory() {
-    var retVal = confirm(`Do you want to update category ${this.category.categoryName} ?`); 
-    if(retVal == true){
+    var retVal = confirm(`Do you want to update category ${this.category.categoryName} ?`);
+    if (retVal == true) {
       this.categoryService.updateCategory(this.category, this.id).subscribe(
-        data =>{
+        data => {
           console.log(data);
           alert(`product category ${this.category.categoryName} updated successfully! `);
           this.rout.navigateByUrl('/categoryList');
-  
+
         },
-        error =>{
+        error => {
           console.log(error)
-          alert("An error occured while trying to update product category: "+this.category.categoryName)
+          alert("An error occured while trying to update product category: " + this.category.categoryName)
         });
     }
-    else{
+    else {
       this.rout.navigateByUrl("/categoryList");
     }
   }

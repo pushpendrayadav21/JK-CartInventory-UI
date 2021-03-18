@@ -2,22 +2,23 @@
     <div class="section-content-p30">
         <div class="container-fluid">
             <div class="row mb-2">
-                <b>Total Count:</b><div class="col-md-6 mb-2">
+                <b>Total Count:</b>
+                <div class="col-md-6 mb-2">
                     <span class="dot text-center">{{theTotalElements}}</span>
                 </div>
             </div>
-            <div class ="row">
-                <div class = "row mb-3">
-                <div class = "col-md-5">
-                    <a routerLink="/addCategory" routerLinkActive="active-link" class="btn btn-sm btn-success">Add
-                        New Product Category</a>
+            <div class="row">
+                <div class="row mb-3">
+                    <div class="col-md-5">
+                        <a routerLink="/addCategory" routerLinkActive="active-link" class="btn btn-sm btn-success">Add
+                            New Product Category</a>
+                    </div>
+                    <div class="col-md-5">
+                        <app-search-categry></app-search-categry>
+                    </div>
+
                 </div>
-                <div class="col-md-5">
-                    <app-search-categry></app-search-categry>
-                </div>
-                
-            </div>
-            
+
                 <table class="table table-bordered table-hover table-sm">
                     <thead style="background-color: brown;">
                         <tr>
@@ -30,16 +31,18 @@
                         <tr *ngFor="let tempProduct of productcategoryList">
                             <td>{{tempProduct.id}}</td>
                             <td>{{tempProduct.categoryName}}</td>
-                            <td><a routerLink = "/updateCategory/{{tempProduct.id}}"><span style="margin-left: 10px;" class="far fa-edit fa-lg"></span></a>
-                                <button (click)="deleteProductCategory(tempProduct.id)"><span style="margin-left: 10px;" class="far fa-trash-alt fa-lg"></span></button>
+                            <td><a routerLink="/updateCategory/{{tempProduct.id}}"><span style="margin-left: 10px;"
+                                        class="far fa-edit fa-lg"></span></a>
+                                <button (click)="deleteProductCategory(tempProduct.id)"><span style="margin-left: 10px;"
+                                        class="far fa-trash-alt fa-lg"></span></button>
                             </td>
                         </tr>
                     </tbody>
                 </table>
-                <div *ngIf = "productcategoryList.length ==0" class = "col-md-12 text-center" alert = "role">
-                     <img src = "assets/images/util/404.gif" style = "height: 20+0px; width: 250px; border-radius: 15px;">
+                <div *ngIf="productcategoryList.length ==0" class="col-md-12 text-center" alert="role">
+                    <img src="assets/images/util/404.gif" style="height: 20+0px; width: 250px; border-radius: 15px;">
                 </div>
-                
+
             </div>
             <!--begin footer-->
             <!-- begin footer -->
@@ -50,22 +53,20 @@
                     <div class="col-md-6">
                         <div class="row">
                             <div class="col-md-9" style="padding-left: 30%">
-                                <ngb-pagination [(page)]="thePageNumber" [pageSize]="thePageSize"
-                                    [collectionSize]="theTotalElements" [maxSize]="5" [boundaryLinks]="true"
-                                    (pageChange)="listProductCategory()">
+                                <ngb-pagination [(page)]="thePageNumber" [pageSize]="thePageSize" [collectionSize]="theTotalElements" [maxSize]="5" [boundaryLinks]="true" (pageChange)="listProductCategory()">
 
                                 </ngb-pagination>
                             </div>
-                            <div class="col-md-3 mt-2" style = "text-align: right;">
-                                <span class ="mr-2">Page Size</span>
-                                <select (change) = "updatePageSize($event.target.value)">
-                                    <option selected = "true">5</option>
+                            <div class="col-md-3 mt-2" style="text-align: right;">
+                                <span class="mr-2">Page Size</span>
+                                <select (change)="updatePageSize($event.target.value)">
+                                    <option selected="true">5</option>
                                     <option>10</option>
                                     <option>20</option>
                                     <option>40</option>
                                 </select>
                             </div>
-                        </div> 
+                        </div>
                     </div>
                 </div>
             </div>

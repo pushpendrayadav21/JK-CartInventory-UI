@@ -63,7 +63,7 @@ export class ProductCategoryListComponent implements OnInit {
     this.thePageNumber = 1;
     this.listProductCategory();
   }
- 
+
   deleteProductCategory(categoryId: number) {
 
     var retVal = confirm("Do you want to delete this category: ?");
