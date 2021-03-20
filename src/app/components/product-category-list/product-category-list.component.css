@@ -1,9 +1,16 @@
 .dot {
     height: 30px;
     width: 60px;
-    background-color: rgb(189, 89, 71);
+    background-color: rgb(189, 71, 159);
     color: aliceblue;
     display: inline-block;
     text-align: center;
     border-radius: 25px;
+}
+
+table.table.table-bordered th {
+    BACKGROUND: #e4a00d;
+    color: #fff;
+    font-size: 14px;
+    padding: 7px;
 }
