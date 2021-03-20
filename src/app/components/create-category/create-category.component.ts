@@ -11,7 +11,7 @@ import { CategoryService } from 'src/app/services/category.service';
   styleUrls: ['./create-category.component.css']
 })
 export class CreateCategoryComponent implements OnInit {
-  
+  failureMessage:string;
   category:ProductCategoryModel = new ProductCategoryModel();
   submitted = false;
   ngOnInit(): void {
@@ -27,18 +27,28 @@ export class CreateCategoryComponent implements OnInit {
   save() {
     this.categoryService.addCategory(this.category).subscribe(
       data =>{
-        console.log(data);
         alert(`${this.category.name} created successfully!`);
         this.router.navigateByUrl('/categoryList');
       },
       error=>{
-        alert(`An error occured while tryinng to create an category`);
-        this.router.navigateByUrl('/categoryList');
+        console.log("Http Status"+error.status)
+        if(error.status == '409'){
+          alert(`The category ${this.category.name} already exists please try with different name`);
+          this.router.navigateByUrl('/categoryList');
+        }
+        else if(error.status == '406'){
+          alert(`Category Name is a required field`);
+          this.router.navigateByUrl('/categoryList');
+        }
+        else{
+          alert(`An error occurred while trying to create a category`);
+          this.router.navigateByUrl('/categoryList');
+        }
+        
       }
-    )
+    );
   }
- 
-  }
+}
 
   // resetProductCategory() {
   //   // reset the form
