@@ -1,4 +1,4 @@
-<div class="main-content page-m">
+<!-- <div class="main-content page-m">
     <div class="section-content section-content-p30">
         <div class="container-fluid">
 
@@ -19,4 +19,36 @@
                 </div>
             </form>
         </div>
-    </div>
+    </div> -->
+<div class="main-content page-m">
+    <div class="section-content section-content-p30">
+        <div class="container-fluid">
+
+            <div [hidden]="submitted" style="width: 400px;">
+
+                <form #categoryForm ="ngForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group" [class.has-error] = "categoryName.invalid">
+                        <div class="row">
+                            <div class="col-md-4">Category Name</div>
+                        <div class="col-md-6">
+                        <input type="text" class="form-control" id="name" required [(ngModel)]="category.name" 
+                        name="name" #categoryName="ngModel"> 
+                      <span  class = "text-danger" *ngIf = "categoryName.invalid && (categoryName.touched || categoryName.dirty)">Category Name is required</span>                        
+                    </div>
+                    <div class="col-md-2"><button type="submit" class="btn btn-success" [disabled] = "categoryForm.invalid">Submit</button></div>
+                    </div>
+                </div>
+
+                            
+                </form>
+                </div>
+
+                <div [hidden]="!submitted">
+                    <!-- <h5>You have submitted data to create product category successfully!</h4> -->
+                    <!-- <div class="alert alert-success">
+                        You have submitted data to create product category successfully!
+                    </div> -->
+
+                </div>
+            </div>
+        </div>

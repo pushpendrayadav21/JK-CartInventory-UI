@@ -17,8 +17,20 @@ export class CategoryService {
   addCategory(category: ProductCategoryModel): Observable<any> {
     console.log("in CategoryService.addCategory");
     console.log("Category: " + JSON.stringify(category));
-    return this.httpClient.post<any>(this.categoryUrl, category)
+    var response = this.httpClient.post<any>(this.categoryUrl, category)
+    console.log(`response from addCategory: ${JSON.stringify(response)}`);
+    return response;
   }
+
+  // addCategory(category: ProductCategoryModel): Observable<string> {
+  //   console.log("in CategoryService.addCategory");
+  //   console.log("Category: " + JSON.stringify(category));
+  //   var response = this.httpClient.post<AddCategoryResponse>(this.categoryUrl, category).pipe(
+  //     map(response => response.failureMessage)
+  //   )
+  //   console.log(`response from addCategory: ${JSON.stringify(response)}`);
+  //   return response;
+  // }
 
   getProductCategoriesPaginate(thePage: number, thePageSize: number): Observable<GetResponseProductCategory> {
     const searchUrl = `${this.categoryUrl}?page=${thePage}&size=${thePageSize}`;
@@ -59,4 +71,9 @@ interface GetResponseProductCategory {
   totalPages: number;
   number: number;
   data: ProductCategory;
+}
+
+interface AddCategoryResponse{
+   successMessage:string;
+   failureMessage:string;
 }

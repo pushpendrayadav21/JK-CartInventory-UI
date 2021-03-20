@@ -11,45 +11,39 @@ import { CategoryService } from 'src/app/services/category.service';
   styleUrls: ['./create-category.component.css']
 })
 export class CreateCategoryComponent implements OnInit {
-  categoryFormGroup: FormGroup;
-
-  constructor(private formBuilder: FormBuilder,
-    private categoryService: CategoryService,
-    private router: Router) { }
-
+  
+  category:ProductCategoryModel = new ProductCategoryModel();
+  submitted = false;
   ngOnInit(): void {
-    this.categoryFormGroup = this.formBuilder.group({
-      category: this.formBuilder.group({
-        categoryName: new FormControl('', [])
-
-      })
-    });
+  
   }
 
+  constructor(private categoryService: CategoryService,private router: Router) { }
+  
   onSubmit() {
-    let category = new ProductCategoryModel();
-    console.log("Handaling form data");
-    const categoryName = this.categoryFormGroup.controls['category'].get('categoryName').value;
-    console.log("in coming CategoryName: " + categoryName);
-    category.name = categoryName;
-    console.log("product category model" + category.name);
-    this.categoryService.addCategory(category).subscribe({
-      next: response => {
-        alert(`Category ${category.name} has been created successfully !`);
-        this.resetProductCategory();
+    this.submitted = true;
+    this.save();    
+  }
+  save() {
+    this.categoryService.addCategory(this.category).subscribe(
+      data =>{
+        console.log(data);
+        alert(`${this.category.name} created successfully!`);
+        this.router.navigateByUrl('/categoryList');
       },
-      error: err => {
-        alert(`There was an error: ${err.message}`);
+      error=>{
+        alert(`An error occured while tryinng to create an category`);
+        this.router.navigateByUrl('/categoryList');
       }
-    }
-    );
+    )
+  }
+ 
   }
 
-  resetProductCategory() {
-    // reset the form
-    this.categoryFormGroup.reset();
-    // navigate back to the products page
-    this.router.navigateByUrl("/categoryList");
+  // resetProductCategory() {
+  //   // reset the form
+  //   this.categoryFormGroup.reset();
+  //   // navigate back to the products page
+  //   this.router.navigateByUrl("/categoryList");
 
-  }
-}
+  // }
