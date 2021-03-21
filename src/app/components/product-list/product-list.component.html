@@ -1,13 +1,16 @@
 <div class="main-content">
     <div class="section-content-p30">
         <div class="container-fluid">
-            <div class="row">
-                <div class="mb-3" style="float: right;">
+            <div class="row mb-3">
+                <div class="row mb-3">
+                
                     <a routerLink="/products" routerLinkActive="active-link" class="btn-sm btn-success">Add New
                         Product</a>
                     <a routerLink="/categoryList" routerLinkActive="active-link" class="btn-sm btn-success ml-3">Product
                         Category List</a>
-                </div>
+                        <app-search-product class = "ml-3"></app-search-product>
+                
+            </div>
                 <table class="table table-bordered table-hover table-sm">
                     <thead style="background-color: brown;">
                         <tr>
@@ -31,7 +34,8 @@
                             <td>{{tempProduct.sku}}</td>
                             <td>{{tempProduct.brandName}}</td>
                             <td>{{tempProduct.itemStoredLocation}}</td>
-                            <td>{{tempProduct.unitPrice}}<img src="assets/images/products/currency_symbol.png" style="margin-left:5px ;"></td>
+                            <td>{{tempProduct.unitPrice}}<img src="assets/images/products/currency_symbol.png"
+                                    style="margin-left:5px ;"></td>
                             <td>{{tempProduct.active == true?'Active':'Inactive'}}</td>
                             <td>{{tempProduct.unitsInStock}}</td>
                             <td>{{tempProduct.createdDate}}</td>
@@ -42,6 +46,33 @@
                         </tr>
                     </tbody>
                 </table>
+            </div>
+            <!-- begin footer -->
+            <div class="footer-pagination">
+                <div class="row">
+                    <div class="col-md-6"></div>
+
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-9" style="padding-left: 30%">
+                                <ngb-pagination [(page)]="thePageNumber" [pageSize]="thePageSize"
+                                    [collectionSize]="theTotalElements" [maxSize]="5" [boundaryLinks]="true"
+                                    (pageChange)="listProducts()">
+
+                                </ngb-pagination>
+                            </div>
+                            <div class="col-md-3 mt-2" style="text-align: right;">
+                                <span class="mr-2">Page Size</span>
+                                <select (change)="updatePageSize($event.target.value)">
+                                    <option selected="true">5</option>
+                                    <option>10</option>
+                                    <option>20</option>
+                                    <option>40</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

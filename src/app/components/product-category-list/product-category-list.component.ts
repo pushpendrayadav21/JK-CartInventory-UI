@@ -46,23 +46,7 @@ export class ProductCategoryListComponent implements OnInit {
     // now search for the product category using keyword
     this.productCategoryService.searchCategory(this.thePageNumber - 1, this.thePageSize, theKeyword).subscribe(this.processResult());
   }
-  processResult() {
-    return data => {
-      this.productcategoryList = data.content,
-        this.thePageNumber = data.number + 1,
-        this.thePageSize = data.size,
-        this.theTotalElements = data.totalElements,
-        console.log('productcategoryList: ' + this.productcategoryList)
-      console.log("The PageNumber: " + data.totalPages);
-      console.log("The Total Elements: " + this.theTotalElements)
-
-    }
-  }
-  updatePageSize(pageSize: number) {
-    this.thePageSize = pageSize;
-    this.thePageNumber = 1;
-    this.listProductCategory();
-  }
+  
 
   deleteProductCategory(categoryId: number) {
 
@@ -86,5 +70,23 @@ export class ProductCategoryListComponent implements OnInit {
 
   handleListProductCategory() {
     this.productCategoryService.getProductCategoriesPaginate(this.thePageNumber - 1, this.thePageSize).subscribe(this.processResult());
+  }
+
+  processResult() {
+    return data => {
+      this.productcategoryList = data.content,
+        this.thePageNumber = data.number + 1,
+        this.thePageSize = data.size,
+        this.theTotalElements = data.totalElements,
+        console.log('productcategoryList: ' + this.productcategoryList)
+      console.log("The PageNumber: " + data.totalPages);
+      console.log("The Total Elements: " + this.theTotalElements)
+
+    }
+  }
+  updatePageSize(pageSize: number) {
+    this.thePageSize = pageSize;
+    this.thePageNumber = 1;
+    this.listProductCategory();
   }
 }

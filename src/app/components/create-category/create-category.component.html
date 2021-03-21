@@ -1,54 +1,39 @@
-<!-- <div class="main-content page-m">
-    <div class="section-content section-content-p30">
-        <div class="container-fluid">
-
-            <form [formGroup]="categoryFormGroup" (ngSubmit)="onSubmit()">
-                <div formGroupName="category" class="form-area">
-                    <h3>Add Product Category</h3>
-                    <div class="row">
-                        <div class="col-md-2"> <label>Category Name</label></div>
-                        <div class="col-md-9">
-                            <div class="input-space">
-                                <input formControlName="categoryName" type="text">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="text-center">
-                    <button type="submit" class="btn btn-info">Add a product category</button>
-                </div>
-            </form>
-        </div>
-    </div> -->
 <div class="main-content page-m">
     <div class="section-content section-content-p30">
         <div class="container-fluid">
 
             <div [hidden]="submitted" style="width: 400px;">
 
-                <form #categoryForm ="ngForm" (ngSubmit)="onSubmit()">
-                    <div class="form-group" [class.has-error] = "categoryName.invalid">
+                <form #categoryForm="ngForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group" [class.has-error]="categoryName.invalid">
+                        <div class="row mb-4">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-8"><a routerLink="/categoryList" class="btn btn-sm btn-success">Back To
+                                    Product Category List</a></div>
+                        </div>
                         <div class="row">
                             <div class="col-md-4">Category Name</div>
-                        <div class="col-md-6">
-                        <input type="text" class="form-control" id="name" required [(ngModel)]="category.name" 
-                        name="name" #categoryName="ngModel"> 
-                      <span  class = "text-danger" *ngIf = "categoryName.invalid && (categoryName.touched || categoryName.dirty)">Category Name is required</span>                        
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" id="name" required [(ngModel)]="category.name"
+                                    name="name" #categoryName="ngModel">
+                                <span class="text-danger"
+                                    *ngIf="categoryName.invalid && (categoryName.touched || categoryName.dirty)">Category
+                                    Name is required</span>
+                            </div>
+                            <div class="col-md-2"><button type="submit" class="btn btn-success"
+                                    [disabled]="categoryForm.invalid">Submit</button></div>
+                        </div>
                     </div>
-                    <div class="col-md-2"><button type="submit" class="btn btn-success" [disabled] = "categoryForm.invalid">Submit</button></div>
-                    </div>
-                </div>
 
-                            
                 </form>
-                </div>
+            </div>
 
-                <div [hidden]="!submitted">
-                    <!-- <h5>You have submitted data to create product category successfully!</h4> -->
-                    <!-- <div class="alert alert-success">
+            <div [hidden]="!submitted">
+                <!-- <h5>You have submitted data to create product category successfully!</h4> -->
+                <!-- <div class="alert alert-success">
                         You have submitted data to create product category successfully!
                     </div> -->
 
-                </div>
             </div>
         </div>
+    </div>

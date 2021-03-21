@@ -12,9 +12,11 @@ import { ProductCategoryListComponent } from './components/product-category-list
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UpdateProductCategoryComponent } from './components/update-product-category/update-product-category.component';
 import { SearchCategryComponent } from './components/search-categry/search-categry.component';
+import { SearchProductComponent } from './components/search-product/search-product.component';
 const routes: Routes = [
   { path: 'category/:id', component: ProductListComponent },
   { path: 'searchByCategory/:keyword', component: ProductCategoryListComponent },
+  { path: 'searchByProduct/:keyword', component: ProductListComponent },
   { path: 'categoryList', component: ProductCategoryListComponent },
   { path: 'updateCategory/:id', component: UpdateProductCategoryComponent },
   { path: 'category', component: ProductListComponent },
@@ -31,7 +33,8 @@ const routes: Routes = [
     CreateCategoryComponent,
     ProductCategoryListComponent,
     UpdateProductCategoryComponent,
-    SearchCategryComponent
+    SearchCategryComponent,
+    SearchProductComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
