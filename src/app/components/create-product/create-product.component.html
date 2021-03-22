@@ -1,0 +1,58 @@
+<div class="main-content page-m">
+    <div class="section-content section-content-p30">
+        <div class="container-fluid">
+            <h4 class="text-center mb-4">Please fill the product info</h4>
+            <form (ngSubmit)="onSubmit()">
+                <div class="form-group row">
+                    <label for="colFormLabel" class="col-sm-3 col-form-label">Product Name</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="name" placeholder="product name" name = "name" [(ngModel)] = "product.name">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="colFormLabel" class="col-sm-3 col-form-label">Manufacturer</label>
+                    <div class="col-sm-6">
+                        <input type="email" class="form-control" id="brandName" placeholder="Manufacturer company" name = "brandName" [(ngModel)] = "product.brandName">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="colFormLabel" class="col-sm-3 col-form-label">Location To Store</label>
+                    <div class="col-sm-6">
+                        <input type="email" class="form-control" id="itemStoredLocation" placeholder="Location to store the Product" name="itemStoredLocation" [(ngModel)] = "product.itemStoredLocation">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="colFormLabel" class="col-sm-3 col-form-label">Product Description</label>
+                    <div class="col-sm-6">
+                        <textarea class="form-control" id="description" placeholder="Product Description" name="description" [(ngModel)] = "product.description"></textarea>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="colFormLabel" class="col-sm-3 col-form-label">Unit Price</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="colFormLabel" placeholder="unit price" name="unitPrice" [(ngModel)] = "product.unitPrice">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="colFormLabel" class="col-sm-3 col-form-label">No of Products</label>
+                    <div class="col-sm-6">
+                        <input type="email" class="form-control" id="unitsInStock" placeholder="No of Products"  name = "unitsInStock" [(ngModel)] = "product.unitsInStock">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="colFormLabel" class="col-sm-3 col-form-label">Product Category</label>
+                    <div class="col-sm-6">
+                        <input type="email" class="form-control" id="productCategory" placeholder="Product Category"  name = "productCategory" [(ngModel)] = "product.productCategory">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="colFormLabel" class="col-sm-3 col-form-label"></label>
+                    <div class="col-sm-6">
+                        <input type="submit" class="form-control" id="colFormLabel" value="Add the Product" class="btn btn-success"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

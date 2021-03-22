@@ -10,6 +10,8 @@ export class Product {
     unitsInStock: number;
     createdDate: Date;
     lastUpdated: Date;
+    productCategory:string;
+    categoryId:number;
 
 }
 

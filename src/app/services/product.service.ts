@@ -43,7 +43,12 @@ export class ProductService {
     return this.httpClient.get<GetResponseProducts>(searchUrl);
   }
 
+  save(product: Product):Observable<any> {
+    return this.httpClient.post(this.baseUrl,product);
+  }
+
 }
+
 
 interface GetResponseProducts {
   dataList: Product[];

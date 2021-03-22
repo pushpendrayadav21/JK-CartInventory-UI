@@ -7,12 +7,13 @@ import { ProductService } from './services/product.service';
 import { Routes, RouterModule } from '@angular/router';
 import { ProductCategoryMenuComponent } from './components/product-category-menu/product-category-menu.component';
 import { CreateCategoryComponent } from './components/create-category/create-category.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule} from '@angular/forms';
 import { ProductCategoryListComponent } from './components/product-category-list/product-category-list.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UpdateProductCategoryComponent } from './components/update-product-category/update-product-category.component';
 import { SearchCategryComponent } from './components/search-categry/search-categry.component';
 import { SearchProductComponent } from './components/search-product/search-product.component';
+import { CreateProductComponent } from './components/create-product/create-product.component';
 const routes: Routes = [
   { path: 'category/:id', component: ProductListComponent },
   { path: 'searchByCategory/:keyword', component: ProductCategoryListComponent },
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'category', component: ProductListComponent },
   { path: 'addCategory', component: CreateCategoryComponent },
   { path: 'products', component: ProductListComponent },
+  { path: 'addProduct', component: CreateProductComponent },
   { path: '', redirectTo: '/products', pathMatch: 'full' },
   { path: '**', redirectTo: '/products', pathMatch: 'full' },
 ]
@@ -34,14 +36,14 @@ const routes: Routes = [
     ProductCategoryListComponent,
     UpdateProductCategoryComponent,
     SearchCategryComponent,
-    SearchProductComponent
+    SearchProductComponent,
+    CreateProductComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule,
     NgbModule
   ],
   providers: [ProductService],
