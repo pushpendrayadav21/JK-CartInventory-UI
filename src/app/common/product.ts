@@ -12,6 +12,7 @@ export class Product {
     lastUpdated: Date;
     productCategory:string;
     categoryId:number;
+    categoryName:string;
 
 }
 
