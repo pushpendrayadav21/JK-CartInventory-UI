@@ -4,9 +4,9 @@
             <div class="row mb-3">
                 <div class="row mb-3">
                 
-                    <a routerLink="/addProduct" routerLinkActive="active-link" class="btn-sm btn-success">Add New
+                    <a routerLink="/addProduct" routerLinkActive="active-link" class = "btn btn-outline-info btn-sm">Add New
                         Product</a>
-                    <a routerLink="/categoryList" routerLinkActive="active-link" class="btn-sm btn-success ml-3">Product
+                    <a routerLink="/categoryList" routerLinkActive="active-link" class="btn btn-sm btn-outline-info ml-3 mr-5">Product
                         Category List</a>
                         <app-search-product class = "ml-3"></app-search-product>
                 
@@ -39,7 +39,8 @@
                             <td>{{tempProduct.active == true?'Active':'Inactive'}}</td>
                             <td>{{tempProduct.unitsInStock}}</td>
                             <td>{{tempProduct.createdDate}}</td>
-                            <td><span style="margin-left: 10px;" class="far fa-edit fa-lg"></span>
+                            <td>
+                                <a routerLink = "/updateProduct/{{tempProduct.id}}"><span style="margin-left: 10px;" class="far fa-edit fa-lg"></span></a>
                                 <span style="margin-left: 10px;" class="fas fa-eye fa-lg"></span>
                                 <span style="margin-left: 10px;" class="far fa-trash-alt fa-lg"></span>
                             </td>

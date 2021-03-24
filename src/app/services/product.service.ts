@@ -10,6 +10,8 @@ import { ProductCategory } from '../common/product-category';
 })
 export class ProductService {
   
+  
+  
   private baseUrl = "http://localhost:2245/api/jk-cart-inventory/product";
   private categoryUrl = "http://localhost:2245/api/jk-cart-inventory/product-category"
 
@@ -47,7 +49,17 @@ export class ProductService {
     return this.httpClient.post(this.baseUrl,product);
   }
 
+  getProductById(id:number):Observable<Product>{
+    console.log(`${this.baseUrl}/${id}`);
+    return this.httpClient.get<GetResponseProduct>(`${this.baseUrl}/${id}`).pipe(
+      map(response => response.data));
+  }
+
+  updateProduct(product: Product,id:number):Observable<any> {
+    return this.httpClient.put<any>(`${this.baseUrl}/${id}`,product)
+  }
 }
+
 
 
 interface GetResponseProducts {
@@ -56,4 +68,8 @@ interface GetResponseProducts {
 
 interface GetResponseProductCategory {
   dataList: ProductCategory[];
+}
+
+interface GetResponseProduct {
+  data: Product;
 }
