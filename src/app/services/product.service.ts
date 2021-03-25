@@ -10,8 +10,6 @@ import { ProductCategory } from '../common/product-category';
 })
 export class ProductService {
   
-  
-  
   private baseUrl = "http://localhost:2245/api/jk-cart-inventory/product";
   private categoryUrl = "http://localhost:2245/api/jk-cart-inventory/product-category"
 
@@ -57,6 +55,10 @@ export class ProductService {
 
   updateProduct(product: Product,id:number):Observable<any> {
     return this.httpClient.put<any>(`${this.baseUrl}/${id}`,product)
+  }
+
+  deleteProduct(id: number):Observable<any> {
+    return this.httpClient.delete(`${this.baseUrl}/${id}`)
   }
 }
 

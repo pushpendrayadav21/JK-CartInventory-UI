@@ -16,8 +16,8 @@ export class UpdateProductComponent implements OnInit {
   category: ProductCategory;
   product: Product;
   productCategory: ProductCategory;
-  constructor(private route: ActivatedRoute, private productService: ProductService, 
-    private categoryService: CategoryService, private router:Router) { }
+  constructor(private route: ActivatedRoute, private productService: ProductService,
+    private categoryService: CategoryService, private router: Router) { }
 
   ngOnInit(): void {
 
@@ -40,21 +40,28 @@ export class UpdateProductComponent implements OnInit {
 
   updateProduct() {
     console.log(`request: ${JSON.stringify(this.product)}`)
-    confirm(`You are Submitting the below details for update \r\n Product Name: ${this.product.name}
+    var isConfirmed = confirm(`You are Submitting the below details for update \r\n Product Name: ${this.product.name}
     \r\n Manufacturer: ${this.product.brandName}
     \r\n Locatin to Store: ${this.product.itemStoredLocation}
     \r\n Product Description: ${this.product.description}
-    \r\n Unit Price: ${this.product.description}
+    \r\n Unit Price: ${this.product.unitPrice}
     \r\n No of Product: ${this.product.unitsInStock}`
     )
-    this.productService.updateProduct(this.product, this.product.id).subscribe(
-      data => {
-        alert(`Porduct updated successfully`);
-        this.router.navigateByUrl('/productList');
-      },
-      error => {
-        alert(`An errror occured while trying to update the product..`)
-      }
-    )
+    if (isConfirmed == true) {
+      this.productService.updateProduct(this.product, this.product.id).subscribe(
+        data => {
+          alert(`Porduct updated successfully`);
+          this.router.navigateByUrl('/productList');
+        },
+        error => {
+          alert(`An errror occured while trying to update the product..`)
+        }
+      )
+    }
+    else {
+      alert(`You have canceled the update request`);
+      this.router.navigateByUrl('/productList');
+    }
   }
+
 }

@@ -42,11 +42,15 @@
                             <td>
                                 <a routerLink = "/updateProduct/{{tempProduct.id}}"><span style="margin-left: 10px;" class="far fa-edit fa-lg"></span></a>
                                 <span style="margin-left: 10px;" class="fas fa-eye fa-lg"></span>
-                                <span style="margin-left: 10px;" class="far fa-trash-alt fa-lg"></span>
+                                <button (click)="deleteProduct(tempProduct.id)"><span style="margin-left: 10px;"
+                                    class="far fa-trash-alt fa-lg"></span></button>
                             </td>
                         </tr>
                     </tbody>
                 </table>
+                <div *ngIf="products.length ==0" class="col-md-12 text-center" alert="role">
+                    <img src="assets/images/util/404.gif" style="height: 20+0px; width: 250px; border-radius: 15px;">
+                </div>
             </div>
             <!-- begin footer -->
             <div class="footer-pagination">

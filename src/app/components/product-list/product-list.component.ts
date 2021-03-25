@@ -15,7 +15,7 @@ export class ProductListComponent implements OnInit {
   thePageSize: number = 5;
   theTotalElements: number = 0;
   searchMode: boolean;
-  products: Product[];
+  products: Product[] = [];
   //currentCategoryId: number;
   constructor(private productService: ProductService, private activatedRoute: ActivatedRoute, private route: Router) { }
 
@@ -82,6 +82,30 @@ export class ProductListComponent implements OnInit {
     this.thePageSize = pageSize;
     this.thePageNumber = 1;
     this.listProducts();
+  }
+
+  deleteProduct(id:number){
+    console.log('in delete product..'+id);
+    var isConfirmed = confirm(`are you sure to delete this category?`)
+    if(isConfirmed== true){
+      this.productService.deleteProduct(id).subscribe(
+        data =>{
+          console.log(`product deleted..`);
+          alert(`product deleted successfully!`);
+          this.route.navigate(["/productList"]);
+  
+        },
+        error =>{
+          console.log(`error while deleting the product`);
+          this.route.navigateByUrl('/productList');
+        }
+      )
+    }
+    else{
+      alert(`you have canceled the deleted product operation..`)
+      this.route.navigate(["/productList"]);
+    }
+    
   }
 }
 
