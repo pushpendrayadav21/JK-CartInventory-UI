@@ -27,15 +27,11 @@ export class CreateProductComponent implements OnInit {
   }
 
   saveProduct() {
-    let categoryId: number = this.getCategoryId(this.product.categoryName);
-    console.log('categoryId: ' + categoryId);
-    this.product.categoryId = categoryId;
-    console.log(JSON.stringify(this.product))
     this.productService.save(this.product).subscribe(
-       data =>{
-         alert("product added successfully");
-         this.router.navigateByUrl('/productList')
-       }
+      data => {
+        alert("product added successfully");
+        this.router.navigateByUrl('/productList')
+      }
     );
   }
 
@@ -47,21 +43,6 @@ export class CreateProductComponent implements OnInit {
       }
     )
   }
-
-
-  getCategoryId(categoryName: string): number {
-    console.log('Category Name: ' + categoryName);
-    let id: number;
-    for (var tempCategory of this.categoryList) {
-
-      if (categoryName == tempCategory.categoryName) {
-        id = tempCategory.id;
-        break;
-      }
-    }
-    return id;
-  }
-
 }
 
 

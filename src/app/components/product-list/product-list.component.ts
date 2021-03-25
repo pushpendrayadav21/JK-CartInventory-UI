@@ -86,12 +86,13 @@ export class ProductListComponent implements OnInit {
 
   deleteProduct(id:number){
     console.log('in delete product..'+id);
-    var isConfirmed = confirm(`are you sure to delete this category?`)
+    var isConfirmed = confirm(`are you sure to delete this product?`)
     if(isConfirmed== true){
       this.productService.deleteProduct(id).subscribe(
         data =>{
           console.log(`product deleted..`);
           alert(`product deleted successfully!`);
+          this.listProducts();
           this.route.navigate(["/productList"]);
   
         },
