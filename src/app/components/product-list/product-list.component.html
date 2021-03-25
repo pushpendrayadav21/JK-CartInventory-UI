@@ -2,15 +2,16 @@
     <div class="section-content-p30">
         <div class="container-fluid">
             <div class="row mb-3">
-                <div class="row mb-3">
-                
-                    <a routerLink="/addProduct" routerLinkActive="active-link" class = "btn btn-outline-info btn-sm">Add New
-                        Product</a>
-                    <a routerLink="/categoryList" routerLinkActive="active-link" class="btn btn-sm btn-outline-info ml-3 mr-5">Product
-                        Category List</a>
-                        <app-search-product class = "ml-3"></app-search-product>
-                
+                <div class="col-md-2"><a routerLink="/addProduct" routerLinkActive="active-link" class = "btn btn-success btn-sm">Add New Product</a>
+                </div>
+                <div class="col-md-2"><a routerLink="/categoryList" routerLinkActive="active-link" class="btn btn-sm btn-success">Product Category List</a>
+                </div>
+                <div class="col-md-3">
+                    <app-search-product></app-search-product>
+                </div>
             </div>
+            <div class="row">
+                
                 <table class="table table-bordered table-hover table-sm">
                     <thead style="background-color: brown;">
                         <tr>
@@ -34,11 +35,10 @@
                             <td>{{tempProduct.sku}}</td>
                             <td>{{tempProduct.brandName}}</td>
                             <td>{{tempProduct.itemStoredLocation}}</td>
-                            <td>{{tempProduct.unitPrice}}<img src="assets/images/products/currency_symbol.png"
-                                    style="margin-left:5px ;"></td>
+                            <td>{{tempProduct.unitPrice | currency:'Rs'}}</td>
                             <td>{{tempProduct.active == true?'Active':'Inactive'}}</td>
                             <td>{{tempProduct.unitsInStock}}</td>
-                            <td>{{tempProduct.createdDate}}</td>
+                            <td>{{tempProduct.createdDate | date:'EEEE, MMMM d, y'}}</td>
                             <td>
                                 <a routerLink = "/updateProduct/{{tempProduct.id}}"><span style="margin-left: 10px;" class="far fa-edit fa-lg"></span></a>
                                 <span style="margin-left: 10px;" class="fas fa-eye fa-lg"></span>
