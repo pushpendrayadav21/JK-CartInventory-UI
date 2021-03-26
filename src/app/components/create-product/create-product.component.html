@@ -10,6 +10,12 @@
                     </div>
                 </div>
                 <div class="form-group row">
+                    <label for="colFormLabel" class="col-sm-3 col-form-label">Product Phto</label>
+                    <div class="col-sm-6">
+                        <input type="file" class="file-control" id="name"  name = "imageUrl" (change) = "onFileSelect($event)">
+                    </div>
+                </div>
+                <div class="form-group row">
                     <label for="colFormLabel" class="col-sm-3 col-form-label">Manufacturer</label>
                     <div class="col-sm-6">
                         <input type="email" class="form-control" id="brandName" placeholder="Manufacturer company" name = "brandName" [(ngModel)] = "product.brandName">
@@ -30,14 +36,14 @@
                 <div class="form-group row">
                     <label for="colFormLabel" class="col-sm-3 col-form-label">Unit Price</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" id="colFormLabel" placeholder="unit price" name="unitPrice" [(ngModel)] = "product.unitPrice">
+                        <input type="number" class="form-control" id="colFormLabel" placeholder="unit price" name="unitPrice" [(ngModel)] = "product.unitPrice">
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label for="colFormLabel" class="col-sm-3 col-form-label">No of Products</label>
                     <div class="col-sm-6">
-                        <input type="email" class="form-control" id="unitsInStock" placeholder="No of Products"  name = "unitsInStock" [(ngModel)] = "product.unitsInStock">
+                        <input type="number" class="form-control" id="unitsInStock" placeholder="No of Products"  name = "unitsInStock" [(ngModel)] = "product.unitsInStock">
                     </div>
                 </div>
                 <div class="form-group row">
