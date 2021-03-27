@@ -15,6 +15,7 @@ import { SearchCategryComponent } from './components/search-categry/search-categ
 import { SearchProductComponent } from './components/search-product/search-product.component';
 import { CreateProductComponent } from './components/create-product/create-product.component';
 import { UpdateProductComponent } from './components/update-product/update-product.component';
+import { ViewProductComponent } from './components/view-product/view-product.component';
 const routes: Routes = [
   { path: 'category/:id', component: ProductListComponent },
   { path: 'searchByCategory/:keyword', component: ProductCategoryListComponent },
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'addCategory', component: CreateCategoryComponent },
   { path: 'updateProduct/:id', component: UpdateProductComponent},
   { path: 'products', component: ProductListComponent },
+  { path: 'viewProduct/:id', component: ViewProductComponent },
   { path: 'addProduct', component: CreateProductComponent },
   { path: '', redirectTo: '/products', pathMatch: 'full' },
   { path: '**', redirectTo: '/products', pathMatch: 'full' },
@@ -40,7 +42,8 @@ const routes: Routes = [
     SearchCategryComponent,
     SearchProductComponent,
     CreateProductComponent,
-    UpdateProductComponent
+    UpdateProductComponent,
+    ViewProductComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

@@ -16,6 +16,7 @@ export class ProductListComponent implements OnInit {
   theTotalElements: number = 0;
   searchMode: boolean;
   products: Product[] = [];
+  
   //currentCategoryId: number;
   constructor(private productService: ProductService, private activatedRoute: ActivatedRoute, private route: Router) { }
 

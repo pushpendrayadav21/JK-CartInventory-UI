@@ -41,7 +41,7 @@
                             <td>{{tempProduct.createdDate | date:'EEEE, MMMM d, y'}}</td>
                             <td>
                                 <a routerLink = "/updateProduct/{{tempProduct.id}}"><span style="margin-left: 10px;" class="far fa-edit fa-lg"></span></a>
-                                <span style="margin-left: 10px;" class="fas fa-eye fa-lg"></span>
+                                <a routerLink = "/viewProduct/{{tempProduct.id}}"><span style="margin-left: 10px;" class="fas fa-eye fa-lg"></span></a>
                                 <button (click)="deleteProduct(tempProduct.id)"><span style="margin-left: 10px;"
                                     class="far fa-trash-alt fa-lg"></span></button>
                             </td>

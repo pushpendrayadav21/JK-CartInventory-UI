@@ -36,10 +36,9 @@ export class CategoryService {
     return this.httpClient.get<GetResponseProductCategory>(searchUrl);
   }
 
-  getProductCategories(): Observable<ProductCategory[]> {
-    return this.httpClient.get<GetResponseProductCategory>(this.categoryUrl).pipe(
-      map(response => response.content)
-    );
+  getProductCategories(): Observable<any> {
+    return this.httpClient.get<any>(`http://localhost:2245/api/jk-cart-inventory/product-category/noPagination`);
+    
   }
 
   deleteProductCategory(categoryId: number): Observable<any> {
