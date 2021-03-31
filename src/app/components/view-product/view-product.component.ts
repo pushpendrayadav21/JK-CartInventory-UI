@@ -10,27 +10,25 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class ViewProductComponent implements OnInit {
 
-  constructor(private productService:ProductService,private activatedRoute:ActivatedRoute) { }
+  constructor(private productService: ProductService, private activatedRoute: ActivatedRoute) { }
 
-  product:Product;
+  product: Product = new Product();
   ngOnInit(): void {
-    let id:number;
+    let id: number;
     id = +this.activatedRoute.snapshot.paramMap.get('id');
     this.viewProduct(id);
-    
+
   }
 
-  viewProduct(id:number){ 
+  viewProduct(id: number) {
     this.productService.getProductById(id).subscribe(
-      data=>{
+      data => {
         this.product = data;
         console.log(JSON.stringify(data))
 
       }
     )
-     
+
   }
-
-
-
 }
+

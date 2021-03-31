@@ -62,8 +62,6 @@ export class ProductService {
   }
 }
 
-
-
 interface GetResponseProducts {
   dataList: Product[];
 }

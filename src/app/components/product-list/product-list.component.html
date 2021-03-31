@@ -19,17 +19,19 @@
                             <th>Name</th>
                             <th>Product Code</th>
                             <th>Brand Name</th>
-                            <th>Stored Location</th>
+                            <th>Location</th>
                             <th>Unit Price</th>
-                            <th>Active Status</th>
-                            <th>No of units in stock</th>
-                            <th>Created Date</th>
+                            <th>Status</th>
+                            <th>count</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let tempProduct of products">
-                            <td><img src={{tempProduct.imageUrl}} style="height:60px;width:100px;" />
+                            <td>
+                                <img src={{tempProduct.imageUrl}} style="height:60px;width:100px;" class="img-thumbnail mb-2"/>
+                                <br>
+                                <button (click) = "addToCart(tempProduct)" class = "btn btn-info btn-sm">Add To Cart</button>
                             </td>
                             <td>{{tempProduct.name}}</td>
                             <td>{{tempProduct.sku}}</td>
@@ -38,7 +40,6 @@
                             <td>{{tempProduct.unitPrice | currency:'Rs'}}</td>
                             <td>{{tempProduct.active == true?'Active':'Inactive'}}</td>
                             <td>{{tempProduct.unitsInStock}}</td>
-                            <td>{{tempProduct.createdDate | date:'EEEE, MMMM d, y'}}</td>
                             <td>
                                 <a routerLink = "/updateProduct/{{tempProduct.id}}"><span style="margin-left: 10px;" class="far fa-edit fa-lg"></span></a>
                                 <a routerLink = "/viewProduct/{{tempProduct.id}}"><span style="margin-left: 10px;" class="fas fa-eye fa-lg"></span></a>

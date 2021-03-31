@@ -16,6 +16,9 @@ import { SearchProductComponent } from './components/search-product/search-produ
 import { CreateProductComponent } from './components/create-product/create-product.component';
 import { UpdateProductComponent } from './components/update-product/update-product.component';
 import { ViewProductComponent } from './components/view-product/view-product.component';
+import { CartStatusComponent } from './components/cart-status/cart-status.component';
+
+
 const routes: Routes = [
   { path: 'category/:id', component: ProductListComponent },
   { path: 'searchByCategory/:keyword', component: ProductCategoryListComponent },
@@ -43,7 +46,8 @@ const routes: Routes = [
     SearchProductComponent,
     CreateProductComponent,
     UpdateProductComponent,
-    ViewProductComponent
+    ViewProductComponent,
+    CartStatusComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
