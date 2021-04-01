@@ -17,9 +17,11 @@ import { CreateProductComponent } from './components/create-product/create-produ
 import { UpdateProductComponent } from './components/update-product/update-product.component';
 import { ViewProductComponent } from './components/view-product/view-product.component';
 import { CartStatusComponent } from './components/cart-status/cart-status.component';
+import { CartDetailsComponent } from './components/cart-details/cart-details.component';
 
 
 const routes: Routes = [
+  { path: 'cart-details', component: CartDetailsComponent },
   { path: 'category/:id', component: ProductListComponent },
   { path: 'searchByCategory/:keyword', component: ProductCategoryListComponent },
   { path: 'searchByProduct/:keyword', component: ProductListComponent },
@@ -47,7 +49,8 @@ const routes: Routes = [
     CreateProductComponent,
     UpdateProductComponent,
     ViewProductComponent,
-    CartStatusComponent
+    CartStatusComponent,
+    CartDetailsComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

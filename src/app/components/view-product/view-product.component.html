@@ -1,8 +1,13 @@
 <div class="main-content page-m">
     <div class="section-content section-content-p30">
         <div class="container-fluid">
+
+            <div class="text-center mb-4">
+                <a routerLink="/" class="btn btn-sm btn-primary">Go To Product List</a>
+            </div>
             <h4 class="text-center mb-4">Detailed info about Product <span
                     style="background-color: burlywood; font-weight: bold;color:crimson">{{product.name}}</span></h4>
+                    
             <table class="table table-bordered table-hover table-sm">
 
                 <tbody>
@@ -54,9 +59,17 @@
                         <td>{{product.lastUpdated | date:'EEEE, MMMM d, y'}}</td>
                     </tr>
                     <tr>
+                        <td>Last Updated By</td>
+                        <td>Pushpendra Yadav</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><button (click) = "addToCart(product)" class="btn btn-sm btn-primary">Add To Cart</button></td>
+                    </tr>
+                    <!-- <tr>
                         <td></td>
                         <td><a routerLink="/" class="btn btn-sm btn-success">Go To Product List</a></td>
-                    </tr>
+                    </tr> -->
                 </tbody>
             </table>
         </div>

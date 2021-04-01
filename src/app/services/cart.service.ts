@@ -24,7 +24,7 @@ export class CartService {
       //     break;
       //   }
       // }
-      existingCartItem = this.cartItems.find(tempCartItem => tempCartItem.unitPrice == theCartItems.id);
+      existingCartItem = this.cartItems.find(tempCartItem => tempCartItem.id == theCartItems.id);
       // check if we found it
       alreadyExistsInCart = (existingCartItem != undefined);
     }
