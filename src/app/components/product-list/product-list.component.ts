@@ -75,11 +75,10 @@ export class ProductListComponent implements OnInit {
   processResult() {
     return data => {
       this.products = data.content,
-        this.thePageNumber = data.number + 1,
-        this.thePageSize = data.size,
-        this.theTotalElements = data.totalElements,
-
-        console.log("The PageNumber: " + data.totalPages);
+      this.thePageNumber = data.number + 1,
+      this.thePageSize = data.size,
+      this.theTotalElements = data.totalElements,
+      console.log("The PageNumber: " + data.totalPages);
       console.log("The Total Elements: " + this.theTotalElements)
 
     }

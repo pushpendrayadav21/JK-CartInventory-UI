@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AppSettings } from 'src/app/app-settings';
 import { Product } from 'src/app/common/product';
 import { ProductCategory } from 'src/app/common/product-category';
 import { CategoryService } from 'src/app/services/category.service';
@@ -13,7 +14,7 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class CreateProductComponent implements OnInit {
 
-  completeImagePath:string = 'assets/images/products';
+  completeImagePath:string = null;
   product: Product = new Product();
   selectedFile:File = null;
 
@@ -31,8 +32,9 @@ export class CreateProductComponent implements OnInit {
   }
 
   saveProduct() {
-    this.product.imageUrl = this.completeImagePath;
-    this.productService.save(this.product).subscribe(
+    this.product.imageUrl = this.completeImagePath
+    ;
+    this.productService.saveProduct(this.product).subscribe(
       data => {
         alert("product added successfully");
         this.router.navigateByUrl('/productList')
@@ -51,11 +53,10 @@ export class CreateProductComponent implements OnInit {
   }
 
   onFileSelect(event){
-    let imagePath:string = 'assets/images/products-image';
+    //let imagePath:string = 'assets/images/products-image';
     this.selectedFile = <File>event.target.files[0];
     const fd = new FormData();
-    this.completeImagePath = `${imagePath}/${this.selectedFile,this.selectedFile.name}`;
-    // fd.append('image',this.selectedFile,this.selectedFile.name)
+    this.completeImagePath = `${AppSettings.IMAGE_PATH}/${this.selectedFile,this.selectedFile.name}`;
     console.log(`in file seletct: `+this.completeImagePath)
     
     
