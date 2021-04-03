@@ -57,7 +57,7 @@ export class CategoryService {
 
   searchCategory(thePage: number, thePageSize: number, theKeyword: string): Observable<GetResponseProductCategory> {
     console.log('> searchCategory')
-    const searchUrl = `${this.categoryUrl}/search/findByName?page=${thePage}&size=${thePageSize}&name=${theKeyword}`;
+    const searchUrl = `${this.categoryUrl}/search/findByNameContaining?page=${thePage}&size=${thePageSize}&name=${theKeyword}`;
     return this.httpClient.get<GetResponseProductCategory>(searchUrl);
   }
 }
