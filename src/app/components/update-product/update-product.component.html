@@ -1,58 +1,93 @@
 <div class="main-content page-m">
     <div class="section-content section-content-p30">
         <div class="container-fluid">
-            <h4 class="text-center mb-4">Update product info..</h4>
-            <form (ngSubmit)="onSubmit()">
-                <div class="form-group row">
-                    <label for="colFormLabel" class="col-sm-3 col-form-label">Product Name</label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" id="name" placeholder="product name" name = "name" [(ngModel)] = "product.name">
+            <h4 class="text-center mb-4">update the product info</h4>
+            
+            <form #productForm = "ngForm" (ngSubmit)="onSubmit()" class="form-area" >
+                <div class="row">
+                    <div class="col-md-2"> <label>Product Name</label></div>
+                    <div class="col-md-9">
+                        <div class="input-space">
+                            <input type="text" class="form-control" id="name" placeholder="product name" required 
+                            name = "name" [(ngModel)] = "product.name" #productName="ngModel">
+
+                            <div *ngIf="productName.invalid && (productName.dirty || productName.touched)" class="alert alert-danger mt-1">
+                                Product Name is required 
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="form-group row">
-                    <label for="colFormLabel" class="col-sm-3 col-form-label">Manufacturer</label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" id="brandName" placeholder="Manufacturer company" name = "brandName" [(ngModel)] = "product.brandName">
+                <div class="row">
+                    <div class="col-md-2"> <label>Manufacturer</label></div>
+                    <div class="col-md-9">
+                        <div class="input-space">
+                            <input type="text" class="form-control" id="brandName" placeholder="manufacturer name" required 
+                            name = "brandName" [(ngModel)] = "product.brandName" #brandName="ngModel">
+
+                            <div *ngIf="brandName.invalid && (brandName.dirty || brandName.touched)" class="alert alert-danger mt-1">
+                                Manufacturer Name is required 
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="form-group row">
-                    <label for="colFormLabel" class="col-sm-3 col-form-label">Location To Store</label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" id="itemStoredLocation" placeholder="Location to store the Product" name="itemStoredLocation" [(ngModel)] = "product.itemStoredLocation">
+                
+                <div class="row">
+                    <div class="col-md-2"> <label>Location To Store</label></div>
+                    <div class="col-md-9">
+                        <div class="input-space">
+                            <input type="text" class="form-control" id="itemStoredLocation" placeholder="Location to store product" required 
+                            name = "itemStoredLocation" [(ngModel)] = "product.itemStoredLocation" #itemStoredLocation="ngModel">
+
+                            <div *ngIf="itemStoredLocation.invalid && (itemStoredLocation.dirty || itemStoredLocation.touched)" class="alert alert-danger mt-1">
+                                Product stored location is required 
+                                
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="form-group row">
-                    <label for="colFormLabel" class="col-sm-3 col-form-label">Product Description</label>
-                    <div class="col-sm-6">
-                        <textarea class="form-control" id="description" placeholder="Product Description" name="description" [(ngModel)] = "product.description"></textarea>
+                
+                <div class="row">
+                    <div class="col-md-2"> <label>Product Description</label></div>
+                    <div class="col-md-9">
+                        <div class="input-space">
+                            <textarea class="form-control" id="description" placeholder="Product Description" 
+                            name="description" [(ngModel)] = "product.description" rows="8"></textarea>
+                        </div>
                     </div>
                 </div>
-                <div class="form-group row">
-                    <label for="colFormLabel" class="col-sm-3 col-form-label">Unit Price</label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" id="colFormLabel" placeholder="unit price" name="unitPrice" [(ngModel)] = "product.unitPrice">
+                
+                <div class="row">
+                    <div class="col-md-2"> <label>Unit Price</label></div>
+                    <div class="col-md-9">
+                        <div class="input-space">
+                            <input type="text" class="form-control" id="unitPrice" placeholder="product unit price" required 
+                            name = "unitPrice" [(ngModel)] = "product.unitPrice" #unitPrice="ngModel">
+
+                            <div *ngIf="unitPrice.invalid && (unitPrice.dirty || unitPrice.touched)" class="alert alert-danger mt-1">
+                                Unit price is required 
+                                
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="form-group row">
-                    <label for="colFormLabel" class="col-sm-3 col-form-label">No of Products</label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" id="unitsInStock" placeholder="No of Products"  name = "unitsInStock" [(ngModel)] = "product.unitsInStock">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <div class = "col-sm-3"><label class="col-form-label" for="inlineFormCustomSelectPref">Product Category</label></div>
-                    <div class = "col-sm-6">
-                        <input type="text" class="form-control" id="unitsInStock" placeholder="Product Category"  name = "categoryName" [(ngModel)] = "product.categoryName" disabled> 
+                <div class="row">
+                    <div class="col-md-2"> <label>No of Product</label></div>
+                    <div class="col-md-9">
+                        <div class="input-space">
+                            <input type="text" class="form-control" id="unitsInStock" placeholder="No of Products" required 
+                            name = "unitsInStock" [(ngModel)] = "product.unitsInStock" #unitsInStock="ngModel">
 
+                            <div *ngIf="unitsInStock.invalid && (unitsInStock.dirty || unitsInStock.touched)" class="alert alert-danger mt-1">
+                                No of Product is required 
+                                
+                            </div>
+                        </div>
                     </div>
                 </div>
-                    
-                <div class="form-group row">
-                    <label for="colFormLabel" class="col-sm-3 col-form-label"></label>
-                    <div class="col-sm-6">
-                        <input type="submit" class="form-control" id="colFormLabel" value="Update Product" class="btn btn-success"/>
-                    </div>
+                
+                <div class="text-center">
+                    <button type="submit" class="btn btn-info" [disabled]="productForm.invalid">Update Product</button>
                 </div>
             </form>
         </div>

@@ -18,6 +18,7 @@ import { UpdateProductComponent } from './components/update-product/update-produ
 import { ViewProductComponent } from './components/view-product/view-product.component';
 import { CartStatusComponent } from './components/cart-status/cart-status.component';
 import { CartDetailsComponent } from './components/cart-details/cart-details.component';
+import { LeftMenuComponent } from './components/left-menu/left-menu.component';
 
 
 const routes: Routes = [
@@ -50,7 +51,8 @@ const routes: Routes = [
     UpdateProductComponent,
     ViewProductComponent,
     CartStatusComponent,
-    CartDetailsComponent
+    CartDetailsComponent,
+    LeftMenuComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

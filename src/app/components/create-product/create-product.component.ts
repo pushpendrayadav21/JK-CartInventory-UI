@@ -53,13 +53,9 @@ export class CreateProductComponent implements OnInit {
   }
 
   onFileSelect(event){
-    //let imagePath:string = 'assets/images/products-image';
     this.selectedFile = <File>event.target.files[0];
-    const fd = new FormData();
-    this.completeImagePath = `${AppSettings.IMAGE_PATH}/${this.selectedFile,this.selectedFile.name}`;
+    this.completeImagePath = `${AppSettings.IMAGE_PATH}/${this.selectedFile.name}`;
     console.log(`in file seletct: `+this.completeImagePath)
-    
-    
   }
 }
 
