@@ -28,7 +28,7 @@ export class ProductService {
   searchProduct(thePage: number, thePageSize: number, theKeyword: string): Observable<any> {
     console.log('> searchProduct')
     const searchUrl = `${AppSettings.PRODUCT_API_BASE_URL}/searchByNameContaining?page=${thePage}&size=${thePageSize}&name=${theKeyword}`;
-    return this.httpClient.get<GetResponseProducts>(searchUrl);
+    return this.httpClient.get<any>(searchUrl);
   }
 
   saveProduct(product: Product):Observable<any> {
@@ -48,10 +48,6 @@ export class ProductService {
   deleteProduct(id: number):Observable<any> {
     return this.httpClient.delete(`${AppSettings.PRODUCT_API_BASE_URL}/${id}`)
   }
-}
-
-interface GetResponseProducts {
-  dataList: Product[];
 }
 
 interface GetProductCategoryResponse {

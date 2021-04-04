@@ -13,16 +13,12 @@ import { ProductService } from 'src/app/services/product.service';
 export class UpdateProductComponent implements OnInit {
 
   productId: number;
-  category: ProductCategory;
   product: Product;
-  productCategory: ProductCategory;
-  constructor(private route: ActivatedRoute, private productService: ProductService,
-    private categoryService: CategoryService, private router: Router) { }
+
+  constructor(private route: ActivatedRoute, private productService: ProductService,private router: Router) { }
 
   ngOnInit(): void {
-
     this.product = new Product();
-    //this.categoryService.
     this.productId = +this.route.snapshot.paramMap.get('id');
     this.productService.getProductById(this.productId).subscribe(
       data => {
@@ -30,7 +26,6 @@ export class UpdateProductComponent implements OnInit {
         console.log('Product Details: ' + JSON.stringify(data));
       }
     );
-
   }
 
   onSubmit() {
@@ -63,5 +58,4 @@ export class UpdateProductComponent implements OnInit {
       this.router.navigateByUrl('/productList');
     }
   }
-
 }

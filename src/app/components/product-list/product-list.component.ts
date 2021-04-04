@@ -12,6 +12,7 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
+  
   // new properties for pagination
   thePageNumber: number = 1;
   thePageSize: number = 5;
@@ -19,57 +20,29 @@ export class ProductListComponent implements OnInit {
   searchMode: boolean;
   products: Product[] = [];
 
-  totalPrice:number;
-  
-  //currentCategoryId: number;
   constructor(private productService: ProductService, private activatedRoute: ActivatedRoute, 
               private route: Router, private cartService: CartService) { }
 
   ngOnInit(): void {
-    this.activatedRoute.paramMap.subscribe(() => {
-      this.listProducts();
-    });
-  }
-
-  // listProducts() {
-  //   //check if id parameter is available
-  //   const hasCategoryId: boolean = this.activatedRoute.snapshot.paramMap.has('id');
-  //   if (hasCategoryId) {
-  //     // convert the given id string to number using '+' operator
-  //     this.currentCategoryId = +this.activatedRoute.snapshot.paramMap.get('id');
-  //     console.log("current category id: " + this.currentCategoryId);
-
-  //   } else {
-  //     // not category id available ...default to category id = 1
-  //     this.currentCategoryId = 11;
-  //   }
-  //   // now get the category for the given categoryid
-
-  //   this.productService.getProductList(this.currentCategoryId).subscribe(
-  //     data => {
-  //       this.products = data
-  //     }
-  //   )
-  // }
-
-  handleSearchProduct() {
-    console.log('in handleSearchProduct..')
-    const theKeyword: string = this.activatedRoute.snapshot.paramMap.get('keyword')
-    console.log('theKeyword: '+theKeyword)
-    // now search for the product category using keyword
-    this.productService.searchProduct(this.thePageNumber - 1, this.thePageSize, theKeyword).subscribe(this.processResult());
+    this.listProducts();
   }
 
   listProducts() {
     this.searchMode = this.activatedRoute.snapshot.paramMap.has('keyword');
     if (this.searchMode) {
-      
-      this.handleSearchProduct();
+        this.handleSearchProduct();
     }
     else {
       this.productService.getProductsPaginate(this.thePageNumber - 1, this.thePageSize).subscribe(this.processResult())
     }
 
+  }
+  handleSearchProduct() {
+    console.log('in handleSearchProduct..')
+    const theKeyword: string = this.activatedRoute.snapshot.paramMap.get('keyword')
+    console.log('theKeyword: '+theKeyword)
+    // now search for the product using keyword
+    this.productService.searchProduct(this.thePageNumber - 1, this.thePageSize, theKeyword).subscribe(this.processResult());
   }
 
   processResult() {
@@ -92,13 +65,13 @@ export class ProductListComponent implements OnInit {
   deleteProduct(id:number){
     console.log('in delete product..'+id);
     var isConfirmed = confirm(`are you sure to delete this product?`)
-    if(isConfirmed== true){
+    if(isConfirmed == true){
       this.productService.deleteProduct(id).subscribe(
         data =>{
           console.log(`product deleted..`);
           alert(`product deleted successfully!`);
           this.listProducts();
-          this.route.navigate(["/productList"]);
+          this.route.navigateByUrl("/productList");
   
         },
         error =>{

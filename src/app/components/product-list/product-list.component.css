@@ -16,3 +16,14 @@ table.table.table-bordered th {
     background: #35dc42;
 }
 
+.circle {
+    width: 150px;
+    height: 55px;
+    border-radius: 50%;
+    border: 2px solid #000;
+    line-height:50px;
+    text-align:center;
+    font-size: 30px;
+    background-color:red;
+    color:white;
+  }
