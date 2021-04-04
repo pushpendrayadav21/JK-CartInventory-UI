@@ -3,7 +3,7 @@
         <div class="container-fluid">
             <h4 class="text-center mb-4">Please fill the product info</h4>
             
-            <form (ngSubmit)="onSubmit()" class="form-area">
+            <form #productForm = "ngForm"(ngSubmit)="onSubmit()" class="form-area">
                 <div class="row">
                     <div class="col-md-2"> <label>Product Name</label></div>
                     <div class="col-md-9">
@@ -113,7 +113,7 @@
                 </div>
                 
                 <div class="text-center">
-                    <button type="submit" class="btn btn-info">Add Product</button>
+                    <button type="submit" class="btn btn-info" [disabled] = "productForm.invalid">Add Product</button>
                 </div>
             </form>
         </div>

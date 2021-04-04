@@ -19,9 +19,11 @@ import { ViewProductComponent } from './components/view-product/view-product.com
 import { CartStatusComponent } from './components/cart-status/cart-status.component';
 import { CartDetailsComponent } from './components/cart-details/cart-details.component';
 import { LeftMenuComponent } from './components/left-menu/left-menu.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 
 
 const routes: Routes = [
+  { path: 'checkout', component: CheckoutComponent },
   { path: 'cart-details', component: CartDetailsComponent },
   { path: 'category/:id', component: ProductListComponent },
   { path: 'searchByCategory/:keyword', component: ProductCategoryListComponent },
@@ -52,7 +54,8 @@ const routes: Routes = [
     ViewProductComponent,
     CartStatusComponent,
     CartDetailsComponent,
-    LeftMenuComponent
+    LeftMenuComponent,
+    CheckoutComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

@@ -18,7 +18,7 @@
         <div class="container-fluid">
             <h4 class="text-center mb-4">Update Category Form</h4>
 
-            <form #productForm="ngForm" (ngSubmit)="onSubmit()" class="form-area">
+            <form #productCategoryForm="ngForm" (ngSubmit)="onSubmit()" class="form-area">
                 <div class="row">
                     <div class="col-md-3"> <label>Product Category Name</label></div>
                     <div class="col-md-6">
@@ -35,7 +35,7 @@
                 </div>
 
                 <div class="text-center">
-                    <button type="submit" class="btn btn-info" [disabled]="productForm.invalid">Update Product
+                    <button type="submit" class="btn btn-info" [disabled]="productCategoryForm.invalid">Update Product
                         Category</button>
                 </div>
             </form>
