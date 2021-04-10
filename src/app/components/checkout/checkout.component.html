@@ -259,7 +259,7 @@
                             <div class="input-space">
                                 <input formControlName="nameOnCard" type="text">
                                 <div *ngIf = "creditCardNameOnCard.invalid && (creditCardNameOnCard.touched || creditCardNameOnCard.dirty)" class="alert alert-danger mt-1">
-                                    <div *ngIf ="creditCardType.errors.required">
+                                    <div *ngIf ="creditCardNameOnCard.errors.required">
                                        Name on Card is required
                                     </div>
                                     <div *ngIf = "creditCardNameOnCard.errors.minlength">

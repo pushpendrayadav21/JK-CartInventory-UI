@@ -41,7 +41,7 @@ export class ProductService {
       map(response => response.data));
   }
 
-  updateProduct(product: Product,id:number):Observable<any> {
+  updateProduct(product: Product,id:string):Observable<any> {
     return this.httpClient.put<any>(`${AppSettings.PRODUCT_API_BASE_URL}/${id}`,product)
   }
 
