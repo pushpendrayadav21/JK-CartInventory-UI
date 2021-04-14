@@ -1,0 +1,39 @@
+<div class="main-content page-m">
+    <div class="section-content section-content-p30">
+        <div class="container-fluid">
+            <div class="row">
+               
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            
+                            <th>Order Tracking Number</th>
+                            <th>Total Price</th>
+                            <th>Total Quantity</th>
+                            <th>ShippingAddress</th>
+                            <th>Order Creation Time:</th>
+                            <th>Payment Status</th>
+                            <th>Payment Mode</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let tempOrderDetails of orderDetailsList">
+                            
+                            <td>{{tempOrderDetails.orderTrackingNumber}}</td>
+                            <td>{{tempOrderDetails.totalPrice | currency: 'Rs'}}</td>
+                            <td>{{tempOrderDetails.totalQuantity}}</td>
+                            <td><b>Street:</b>{{tempOrderDetails.shippingAddress.street}},
+                            <span><b>City:</b>{{tempOrderDetails.shippingAddress.city}}</span>
+                            <p><b>State:</b>{{tempOrderDetails.shippingAddress.state}},<b>Country:</b>{{tempOrderDetails.shippingAddress.country}}</p>
+                            <p><b>ZipCode:</b>{{tempOrderDetails.shippingAddress.zipCode}}
+                            
+                        </td>
+                        <td>{{tempOrderDetails.dateCreated | date:'medium'}}</td>
+                        <td>PAID</td>
+                        <td>Credit Card</td>
+                        </tr>
+                    </tbody>
+                </table>
+        </div>
+    </div>
+</div>

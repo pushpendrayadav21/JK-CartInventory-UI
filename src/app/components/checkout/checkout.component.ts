@@ -6,6 +6,7 @@ import { Order } from 'src/app/common/order';
 import { OrderItem } from 'src/app/common/order-item';
 import { Purchase } from 'src/app/common/purchase';
 import { State } from 'src/app/common/state';
+import { OrderDetailsService } from 'src/app/service/order-details.service';
 import { CartService } from 'src/app/services/cart.service';
 import { CheckoutService } from 'src/app/services/checkout.service';
 import { ItValleyFormService } from 'src/app/services/it-valley-form.service';
@@ -162,13 +163,14 @@ export class CheckoutComponent implements OnInit {
           alert(`your order has been received.\nOrder Tracking number is ${response.trackingOrderNumber}`);
           // reset the cart
           this.resetCart();
+
         },
         error:error =>{
           alert(`There was an error: ${error.message}`);
         }
       }
-    )
-
+    );
+    
   }
   resetCart() {
     // reset the cartItems

@@ -20,9 +20,11 @@ import { CartStatusComponent } from './components/cart-status/cart-status.compon
 import { CartDetailsComponent } from './components/cart-details/cart-details.component';
 import { LeftMenuComponent } from './components/left-menu/left-menu.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import { OrderDetailsComponent } from './components/order-details/order-details.component';
 
 
 const routes: Routes = [
+  { path: 'order-details', component: OrderDetailsComponent},
   { path: 'checkout', component: CheckoutComponent },
   { path: 'cart-details', component: CartDetailsComponent },
   { path: 'category/:id', component: ProductListComponent },
@@ -55,7 +57,8 @@ const routes: Routes = [
     CartStatusComponent,
     CartDetailsComponent,
     LeftMenuComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    OrderDetailsComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

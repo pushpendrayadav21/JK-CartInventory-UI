@@ -6,4 +6,5 @@ export class AppSettings {
     public static STATES_URL = "http://localhost:2245/api/jk-cart-inventory/util/states";
     public static STATESBYCOUNTRYCODE_URL = "http://localhost:2245/api/jk-cart-inventory/util/findStateByCountryCode";
     public static PURCHASE_URL = "http://localhost:2245/api/jk-cart-inventory/checkout";
+    public static ORDER_DETAILS_URL = "http://localhost:2245/api/jk-cart-inventory/orders";
 }
