@@ -33,7 +33,10 @@ export class ProductListComponent implements OnInit {
         this.handleSearchProduct();
     }
     else {
-      this.productService.getProductsPaginate(this.thePageNumber - 1, this.thePageSize).subscribe(this.processResult())
+      this.productService.getProductsPaginate(this.thePageNumber - 1, this.thePageSize).subscribe(this.processResult(),err=>{
+        console.log("error status: "+err.status)
+        this.route.navigateByUrl('/login-user');
+      })
     }
 
   }
@@ -47,12 +50,17 @@ export class ProductListComponent implements OnInit {
 
   processResult() {
     return data => {
+      console.log(data.status)
       this.products = data.content,
       this.thePageNumber = data.number + 1,
       this.thePageSize = data.size,
       this.theTotalElements = data.totalElements,
       console.log("The PageNumber: " + data.totalPages);
-      console.log("The Total Elements: " + this.theTotalElements)
+      console.log("Te Total Elements: " + this.theTotalElements);
+      console.log("Response Status: "+data.status)
+      if(data.status == 403){
+        console.log("jai ho");
+      }
 
     }
   }

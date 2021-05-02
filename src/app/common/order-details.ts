@@ -4,4 +4,6 @@ export class OrderDetails {
     totalPrice:number;
     totalQuantity:number;
     dateCreated:Date;
+    firstName:string;
+    
 }

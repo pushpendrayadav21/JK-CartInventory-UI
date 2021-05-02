@@ -44,7 +44,13 @@ export class ProductCategoryListComponent implements OnInit {
     console.log('in handleSearchProduct..')
     const theKeyword: string = this.route.snapshot.paramMap.get('keyword')
     // now search for the product category using keyword
-    this.productCategoryService.searchCategory(this.thePageNumber - 1, this.thePageSize, theKeyword).subscribe(this.processResult());
+    this.productCategoryService.searchCategory(this.thePageNumber - 1, this.thePageSize, theKeyword).subscribe(this.processResult(),
+    err=>
+      { 
+        console.log('error status '+err.status)
+      if(err.status == 403){
+        this.router.navigateByUrl('/login-user')}
+      })
   }
   
 
@@ -69,7 +75,12 @@ export class ProductCategoryListComponent implements OnInit {
   }
 
   handleListProductCategory() {
-    this.productCategoryService.getProductCategoriesPaginate(this.thePageNumber - 1, this.thePageSize).subscribe(this.processResult());
+    this.productCategoryService.getProductCategoriesPaginate(this.thePageNumber - 1, this.thePageSize).subscribe(this.processResult(),err=>
+    { 
+      console.log('error status '+err.status)
+    if(err.status == 403){
+      this.router.navigateByUrl('/login-user')}
+    });
   }
 
   processResult() {

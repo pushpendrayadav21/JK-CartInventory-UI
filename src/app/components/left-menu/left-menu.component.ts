@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from 'src/app/all-service/authentication.service';
 
 @Component({
   selector: 'app-left-menu',
@@ -7,8 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LeftMenuComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService:AuthenticationService) { 
+    
+  }
 
+  logout(){
+    this.authService.logOut();
+  }
   ngOnInit(): void {
   }
 

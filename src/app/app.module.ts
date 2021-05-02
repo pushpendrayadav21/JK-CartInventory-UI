@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { ProductService } from './services/product.service';
 import { Routes, RouterModule } from '@angular/router';
 import { ProductCategoryMenuComponent } from './components/product-category-menu/product-category-menu.component';
@@ -21,9 +21,28 @@ import { CartDetailsComponent } from './components/cart-details/cart-details.com
 import { LeftMenuComponent } from './components/left-menu/left-menu.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { OrderDetailsComponent } from './components/order-details/order-details.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoginComponent } from './login-user/login.component';
+import { RegisterComponent } from './register-users/register.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { UserComponent } from './user/user.component';
+import { AuthenticationGuard } from './guard/authentication.guard';
+import { NotificationModule } from './notification.module';
+import { NotificationService } from './all-service/notification.service';
+import { AuthenticationService } from './all-service/authentication.service';
+import { UserService } from './all-service/user.service';
+import { DashboardService } from './all-service/dashboard.service';
+import { AuthInterceptor } from './interceptor/auth.interceptor';
+import { LogoutComponent } from './logout/logout.component';
 
 
 const routes: Routes = [
+  { path: 'login-user', component: LoginComponent },
+  { path: 'logout', component: LogoutComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'changepassword', component: ResetPasswordComponent },
+  { path: 'user/management', component: UserComponent, canActivate: [AuthenticationGuard] },
+  { path: '', redirectTo: '/login-user', pathMatch: 'full' },
   { path: 'order-details', component: OrderDetailsComponent},
   { path: 'checkout', component: CheckoutComponent },
   { path: 'cart-details', component: CartDetailsComponent },
@@ -58,7 +77,12 @@ const routes: Routes = [
     CartDetailsComponent,
     LeftMenuComponent,
     CheckoutComponent,
-    OrderDetailsComponent
+    OrderDetailsComponent,
+    LoginComponent,
+    UserComponent,
+    ResetPasswordComponent,
+    RegisterComponent,
+    LogoutComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
@@ -66,9 +90,12 @@ const routes: Routes = [
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+    BrowserAnimationsModule,
+    NotificationModule
   ],
-  providers: [ProductService],
+  providers: [ProductService,NotificationService, AuthenticationGuard, AuthenticationService, UserService, DashboardService,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
